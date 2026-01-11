@@ -3,335 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>章雨馨 - 前端作品集</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Inter", "Microsoft YaHei", sans-serif;
-        }
-
-        body {
-            background-color: #f2f4f6;
-            color: #333;
-            line-height: 1.7;
-            padding: 0;
-            margin: 0 auto;
-            max-width: 1200px;
-            padding: 2rem 1.5rem;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 4rem;
-            padding: 2.5rem 0;
-            background-color: #fff;
-            border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .header h1 {
-            color: #2d88ff;
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            letter-spacing: -0.5px;
-        }
-
-        .header p {
-            color: #666;
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-        }
-
-        .header .contact {
-            font-size: 1rem;
-            color: #888;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 2rem;
-            padding-left: 1rem;
-            border-left: 4px solid #2d88ff;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: -8px;
-            left: 1rem;
-            width: 60px;
-            height: 2px;
-            background-color: #2d88ff;
-        }
-
-        .skills {
-            margin-bottom: 4rem;
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .skill-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-item {
-            margin-bottom: 0;
-        }
-
-        .skill-item .skill-title {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.6rem;
-            color: #444;
-            font-weight: 500;
-            font-size: 1.05rem;
-        }
-
-        .skill-bar {
-            width: 100%;
-            height: 8px;
-            background-color: #e8edf3;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: #2d88ff;
-            border-radius: 4px;
-            transition: width 0.6s ease;
-        }
-
-        .skill-tip {
-            position: absolute;
-            top: -30px;
-            left: calc(var(--progress) - 50px);
-            background-color: #2d88ff;
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 10;
-            box-shadow: 0 2px 8px rgba(45, 136, 255, 0.3);
-        }
-
-        .skill-bar:hover .skill-tip {
-            opacity: 1;
-        }
-
-        .projects {
-            margin-bottom: 4rem;
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .project-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background-color: #f9fbff;
-            border: 1px solid #e8edf3;
-            border-radius: 12px;
-            padding: 1.8rem;
-            transition: all 0.4s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 24px rgba(45, 136, 255, 0.12);
-            border-color: #2d88ff;
-        }
-
-        .project-card h3 {
-            color: #2d88ff;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid #e8edf3;
-        }
-
-        .project-img {
-            width: 100%;
-            height: 260px;
-            background-color: #e8edf3;
-            border-radius: 8px;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            background-size: cover;
-            background-position: center;
-            border: 1px solid #f0f4f9;
-        }
-
-        .project-info h4 {
-            color: #333;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.6rem;
-        }
-
-        .project-info p {
-            color: #666;
-            margin-bottom: 1rem;
-            padding-left: 0.8rem;
-            border-left: 2px solid #e8edf3;
-            line-height: 1.6;
-            font-size: 1rem;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #888;
-            font-size: 0.95rem;
-            border-top: 1px solid #e8edf3;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2.2rem;
+    <title>章雨馨 - 前端开发者作品集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // Tailwind自定义配置
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF', // 主色调：高级蓝
+                        secondary: '#F5F7FA', // 辅助色：浅灰
+                        dark: '#1D2129', // 深色文本
+                        light: '#86909C', // 浅色文本
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'card-hover': '0 8px 30px rgba(22, 93, 255, 0.1)',
+                    }
+                },
             }
-            .section-title {
-                font-size: 1.5rem;
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
             }
-            .project-cards {
-                grid-template-columns: 1fr;
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                background-image: linear-gradient(135deg, #165DFF, #4080FF);
             }
-            .skill-list {
-                grid-template-columns: 1fr;
+            .progress-animate {
+                transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
             }
-            .header .contact {
-                gap: 1rem;
+            .card-animate {
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
         }
     </style>
 </head>
-<body>
-    <div class="header">
-        <h1>章雨馨</h1>
-        <p>前端开发爱好者 / 小程序项目实践者</p>
-        <div class="contact">
-            <span>邮箱：2926076094@qq.com</span>
-            <span>GitHub：moodnzhang</span>
-        </div>
-    </div>
-
-    <div class="skills">
-        <h2 class="section-title">我的技能</h2>
-        <div class="skill-list">
-            <div class="skill-item">
-                <div class="skill-title">
-                    <span>HTML5 / CSS3</span>
-                    <span>90%</span>
+<body class="font-inter bg-secondary min-h-screen text-dark">
+    <!-- 导航栏（固定+透明渐变） -->
+    <nav class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="font-bold text-xl text-primary">
+                    <span class="text-gradient">ZYUXIN</span>
                 </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 90%;" style="--progress: 90%"></div>
-                    <div class="skill-tip">掌握Flex布局、响应式设计、CSS3动画</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-light hover:text-primary transition-colors">关于我</a>
+                    <a href="#skills" class="text-light hover:text-primary transition-colors">技能栈</a>
+                    <a href="#projects" class="text-light hover:text-primary transition-colors">项目作品</a>
+                    <a href="#contact" class="text-light hover:text-primary transition-colors">联系我</a>
                 </div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-title">
-                    <span>Vue3</span>
-                    <span>92%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 92%;" style="--progress: 92%"></div>
-                    <div class="skill-tip">掌握组件通信、Pinia状态管理、Vue Router</div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-title">
-                    <span>Uni-app</span>
-                    <span>85%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 85%;" style="--progress: 85%"></div>
-                    <div class="skill-tip">熟练开发跨端小程序，掌握微信小程序原生API</div>
-                </div>
-            </div>
-            <div class="skill-item">
-                <div class="skill-title">
-                    <span>JavaScript</span>
-                    <span>88%</span>
-                </div>
-                <div class="skill-bar">
-                    <div class="skill-progress" style="width: 88%;" style="--progress: 88%"></div>
-                    <div class="skill-tip">掌握ES6+语法、异步编程、DOM操作</div>
+                <div class="md:hidden">
+                    <button class="text-light hover:text-primary">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="projects">
-        <h2 class="section-title">我的项目</h2>
-        <div class="project-cards">
-            <div class="project-card">
-                <h3>智物 - 物品管理与社区分享小程序</h3>
-                <div class="project-img">
-                    background-image: url("截图链接");
+    <!-- 英雄区（首屏视觉） -->
+    <section id="about" class="pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight">
+                    嗨，我是<span class="text-gradient">章雨馨</span>
+                    <br>前端开发实践者
+                </h1>
+                <p class="text-light text-lg max-w-lg">
+                    专注小程序与前端开发，擅长用代码实现产品价值，
+                    追求优雅、高效、可维护的代码风格，
+                    热爱探索前沿技术并落地到实际项目中。
+                </p>
+                <div class="flex space-x-4 pt-4">
+                    <a href="#projects" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors shadow-lg">
+                        查看作品 <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#contact" class="border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary/5 transition-colors">
+                        联系我
+                    </a>
                 </div>
-                <div class="project-info">
-                    <h4>核心技术栈</h4>
-                    <p>wxml / wxss / JavaScript + ChatGLM + 百度EasyDL</p>
-                    <h4>核心功能</h4>
-                    <p>物品生命周期排序、AI助手智能问答、社区广场发帖与互动</p>
-                    <h4>项目成果</h4>
-                    <p>获得省级计算机设计大赛三等奖</p>
+                <div class="flex space-x-6 pt-8">
+                    <a href="https://github.com/moodnzhang" class="text-light hover:text-primary text-2xl transition-colors">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    <a href="mailto:2926076094@qq.com" class="text-light hover:text-primary text-2xl transition-colors">
+                        <i class="fa fa-envelope"></i>
+                    </a>
                 </div>
             </div>
-
-            <div class="project-card">
-                <h3>宠爱家 - 宠物健康管理与社区小程序</h3>
-                <div class="project-img">
-                    background-image: url("截图链接");
+            <div class="relative">
+                <div class="w-full h-80 bg-primary/5 rounded-2xl flex items-center justify-center">
+                    <div class="w-64 h-64 bg-white rounded-full shadow-card-hover flex items-center justify-center">
+                        <div class="text-8xl text-primary/20">
+                            <i class="fa fa-code"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-info">
-                    <h4>核心技术栈</h4>
-                    <p>Uni-app + 微信云开发 + Deepseek AI接口</p>
-                    <h4>核心功能</h4>
-                    <p>宠物健康档案管理、AI智能问诊、宠物话题社区分区</p>
-                    <h4>项目成果</h4>
-                    <p>获得省级2项奖项 + 校级计算机设计大赛一等奖</p>
+                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-card">
+                    <div class="text-sm text-light">已获省级奖项</div>
+                    <div class="text-lg font-bold text-primary">3项</div>
+                </div>
+                <div class="absolute -top-6 -right-6 bg-white p-4 rounded-lg shadow-card">
+                    <div class="text-sm text-light">核心项目</div>
+                    <div class="text-lg font-bold text-primary">2+</div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="footer">
-        © 2026 章雨馨 前端作品集 | 部署于 GitHub Pages
-    </div>
+    <!-- 技能区（动态进度条） -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold">我的<span class="text-gradient">技能栈</span></h2>
+                <p class="text-light max-w-2xl mx-auto pt-4">专注前端核心技术，兼顾跨端开发，持续迭代技术能力</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 技能项1 -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">HTML5 / CSS3</span>
+                        <span class="text-light">90%</span>
+                    </div>
+                    <div class="h-2 bg-secondary rounded-full overflow-hidden">
+                        <div class="h-full bg-primary progress-animate w-[90%] rounded-full"></div>
+                    </div>
+                </div>
+                <!-- 技能项2 -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">Vue3</span>
+                        <span class="text-light">92%</span>
+                    </div>
+                    <div class="h-2 bg-secondary rounded-full overflow-hidden">
+                        <div class="h-full bg-primary progress-animate w-[92%] rounded-full"></div>
+                    </div>
+                </div>
+                <!-- 技能项3 -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">Uni-app</span>
+                        <span class="text-light">85%</span>
+                    </div>
+                    <div class="h-2 bg-secondary rounded-full overflow-hidden">
+                        <div class="h-full bg-primary progress-animate w-[85%] rounded-full"></div>
+                    </div>
+                </div>
+                <!-- 技能项4 -->
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium">JavaScript</span>
+                        <span class="text-light">88%</span>
+                    </div>
+                    <div class="h-2 bg-secondary rounded-full overflow-hidden">
+                        <div class="h-full bg-primary progress-animate w-[88%] rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 技术标签云 -->
+            <div class="flex flex-wrap gap-4 pt-12 justify-center">
+                <span class="px-4 py-2 bg-secondary rounded-full text-light text-sm">ES6+</span>
+                <span class="px-4 py-2 bg-secondary rounded-full text-light text-sm">Pinia</span>
+                <span class="px-4 py-2 bg-secondary rounded-full text-light text-sm">Vue Router</span>
+                <span class="px-4 py-2 bg-secondary rounded-full text-light text-sm">微信小程序</span>
+                <span class="px-4 py-2 bg-secondary rounded-full text-light text-sm">微信云开发</span>
+                <span class="px-4 py-2 bg-secondary rounded-full text-light text-sm">AI接口集成</span>
+            </div>
+        </div>
+    </section>
 
+    <!-- 项目作品区（卡片hover动效） -->
+    <section id="projects" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold">我的<span class="text-gradient">项目作品</span></h2>
+            <p class="text-light max-w-2xl mx-auto pt-4">从需求到落地，用代码实现产品价值</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- 项目卡片1 -->
+            <div class="bg-white rounded-xl shadow-card card-animate hover:shadow-card-hover hover:-translate-y-2 overflow-hidden">
+                <div class="h-56 bg-secondary flex items-center justify-center">
+                    <img src="https://via.placeholder.com/800x400?text=智物小程序" alt="智物小程序" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 space-y-4">
+                    <h3 class="text-xl font-bold text-primary">智物 - 物品管理与社区分享小程序</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary/5 text-primary text-xs rounded-full">wxml/wxss</span>
+                        <span class="px-3 py-1 bg-primary/5 text-primary text-xs rounded-full">ChatGLM</span>
+                        <span class="px-3 py-1 bg-primary/5 text-primary text-xs rounded-full">百度EasyDL</span>
+                    </div>
+                    <p class="text-light">
+                        实现物品生命周期排序、AI助手智能问答、社区广场发帖与互动功能，
+                        获得省级计算机设计大赛三等奖。
+                    </p>
+                    <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                        查看详情 <i class="fa fa-angle-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- 项目卡片2 -->
+            <div class="bg-white rounded-xl shadow-card card-animate hover:shadow-card-hover hover:-translate-y-2 overflow-hidden">
+                <div class="h-56 bg-secondary flex items-center justify-center">
+                    <img src="https://via.placeholder.com/800x400?text=宠爱家小程序" alt="宠爱家小程序" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 space-y-4">
+                    <h3 class="text-xl font-bold text-primary">宠爱家 - 宠物健康管理与社区小程序</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-primary/5 text-primary text-xs rounded-full">Uni-app</span>
+                        <span class="px-3 py-1 bg-primary/5 text-primary text-xs rounded-full">微信云开发</span>
+                        <span class="px-3 py-1 bg-primary/5 text-primary text-xs rounded-full">Deepseek AI</span>
+                    </div>
+                    <p class="text-light">
+                        打造宠物健康档案管理、AI智能问诊、宠物话题社区分区功能，
+                        获得省级2项奖项 + 校级计算机设计大赛一等奖。
+                    </p>
+                    <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
+                        查看详情 <i class="fa fa-angle-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系区 -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold">联系<span class="text-gradient">我</span></h2>
+                <p class="text-light max-w-2xl mx-auto pt-4">欢迎交流前端技术、项目合作，期待你的消息</p>
+            </div>
+            <div class="max-w-md mx-auto bg-secondary rounded-xl p-8">
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                            <i class="fa fa-envelope text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-light text-sm">邮箱</div>
+                            <div class="font-medium">2926076094@qq.com</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                            <i class="fa fa-github text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-light text-sm">GitHub</div>
+                            <div class="font-medium">moodnzhang</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-8">
+                    <a href="mailto:2926076094@qq.com" class="block w-full bg-primary text-white text-center py-3 rounded-lg hover:bg-primary/90 transition-colors">
+                        发送邮件 <i class="fa fa-paper-plane ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-8 bg-dark text-white/70 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p>© 2026 章雨馨 前端作品集 | 用心写好每一行代码</p>
+        </div>
+    </footer>
+
+    <!-- 滚动动画脚本 -->
     <script>
-        const skillBars = document.querySelectorAll('.skill-bar');
-        skillBars.forEach(bar => {
-            const progress = bar.querySelector('.skill-progress').style.width;
-            bar.style.setProperty('--progress', progress);
+        // 进度条滚动触发动画
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('progress-animate');
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('.skill-progress').forEach(progress => {
+                observer.observe(progress);
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
     </script>
 </body>
