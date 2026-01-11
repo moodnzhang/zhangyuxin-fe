@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>章雨馨 - 前端作品集</title>
+    <style>
+        /* 全局样式重置与基础配置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+
+        body {
+            background-color: #F5F7FA; /* 浅灰背景色，匹配简历 */
+            color: #666;
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 头部个人信息样式 */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #4A90E2; /* 浅蓝分隔线 */
+        }
+
+        .header h1 {
+            color: #4A90E2; /* 浅蓝主色 */
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #333;
+            font-size: 1.2rem;
+            margin: 0.3rem 0;
+        }
+
+        .header .contact {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* 技能进度条区域样式 */
+        .skills {
+            margin-bottom: 3rem;
+        }
+
+        .skills h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid #4A90E2;
+        }
+
+        .skill-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-item .skill-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e0e6ed;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, #4A90E2, #6bb6ff); /* 浅蓝渐变进度条 */
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
+
+        .skill-tip {
+            position: absolute;
+            top: -35px;
+            left: calc(var(--progress) - 60px);
+            background-color: #333;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .skill-bar:hover .skill-tip {
+            opacity: 1;
+        }
+
+        /* 项目作品集区域样式（侯杰同款卡片式布局） */
+        .projects {
+            margin-bottom: 3rem;
+        }
+
+        .projects h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid #4A90E2;
+        }
+
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: #4A90E2;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 280px;
+            background-color: #e0e6ed;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-info h4 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #e0e6ed;
+        }
+
+        /* 底部样式 */
+        .footer {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e6ed;
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部个人信息 -->
+    <div class="header">
+        <h1>章雨馨</h1>
+        <p>前端开发爱好者 / 小程序项目实践者</p>
+        <div class="contact">
+            邮箱：2926076094@qq.com | GitHub：moodnzhang
+        </div>
+    </div>
+
+    <!-- 技能进度条区域 -->
+    <div class="skills">
+        <h2>我的技能</h2>
+        <div class="skill-item">
+            <div class="skill-title">
+                <span>HTML5 / CSS3</span>
+                <span>90%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 90%;" style="--progress: 90%"></div>
+                <div class="skill-tip">掌握Flex布局、响应式设计、CSS3动画</div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-title">
+                <span>Vue3</span>
+                <span>92%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 92%;" style="--progress: 92%"></div>
+                <div class="skill-tip">掌握组件通信、Pinia状态管理、Vue Router</div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-title">
+                <span>Uni-app</span>
+                <span>85%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 85%;" style="--progress: 85%"></div>
+                <div class="skill-tip">熟练开发跨端小程序，掌握微信小程序原生API</div>
+            </div>
+        </div>
+        <div class="skill-item">
+            <div class="skill-title">
+                <span>JavaScript</span>
+                <span>88%</span>
+            </div>
+            <div class="skill-bar">
+                <div class="skill-progress" style="width: 88%;" style="--progress: 88%"></div>
+                <div class="skill-tip">掌握ES6+语法、异步编程、DOM操作</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 项目作品集区域 -->
+    <div class="projects">
+        <h2>我的项目</h2>
+        <div class="project-cards">
+            <!-- 智物小程序项目 -->
+            <div class="project-card">
+                <h3>智物 - 物品管理与社区分享小程序</h3>
+                <div class="project-img">
+                    （此处替换为智物小程序截图，可直接替换为图片链接：background-image: url("你的截图链接");）
+                </div>
+                <div class="project-info">
+                    <h4>核心技术栈</h4>
+                    <p>wxml / wxss / JavaScript + ChatGLM + 百度EasyDL</p>
+                    <h4>核心功能</h4>
+                    <p>物品生命周期排序、AI助手智能问答、社区广场发帖与互动</p>
+                    <h4>项目成果</h4>
+                    <p>获得省级计算机设计大赛三等奖</p>
+                </div>
+            </div>
+
+            <!-- 宠爱家小程序项目 -->
+            <div class="project-card">
+                <h3>宠爱家 - 宠物健康管理与社区小程序</h3>
+                <div class="project-img">
+                    （此处替换为宠爱家小程序截图，可直接替换为图片链接：background-image: url("你的截图链接");）
+                </div>
+                <div class="project-info">
+                    <h4>核心技术栈</h4>
+                    <p>Uni-app + 微信云开发 + Deepseek AI接口</p>
+                    <h4>核心功能</h4>
+                    <p>宠物健康档案管理、AI智能问诊、宠物话题社区分区</p>
+                    <h4>项目成果</h4>
+                    <p>获得省级2项奖项 + 校级计算机设计大赛一等奖</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer">
+        © 2026 章雨馨 前端作品集 | 部署于 GitHub Pages
+    </div>
+
+    <script>
+        // 为技能进度条绑定进度变量，实现提示框居中
+        const skillBars = document.querySelectorAll('.skill-bar');
+        skillBars.forEach(bar => {
+            const progress = bar.querySelector('.skill-progress').style.width;
+            bar.style.setProperty('--progress', progress);
+        });
+    </script>
+</body>
+</html>
