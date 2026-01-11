@@ -5,248 +5,296 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>章雨馨 - 前端作品集</title>
     <style>
-        /* 全局样式重置与基础配置 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
+            font-family: "Inter", "Microsoft YaHei", sans-serif;
         }
 
         body {
-            background-color: #F5F7FA; /* 浅灰背景色，匹配简历 */
-            color: #666;
-            line-height: 1.6;
-            padding: 2rem;
-            max-width: 1200px;
+            background-color: #f2f4f6;
+            color: #333;
+            line-height: 1.7;
+            padding: 0;
             margin: 0 auto;
+            max-width: 1200px;
+            padding: 2rem 1.5rem;
         }
 
-        /* 头部个人信息样式 */
         .header {
             text-align: center;
-            margin-bottom: 3rem;
-            padding-bottom: 2rem;
-            border-bottom: 2px solid #4A90E2; /* 浅蓝分隔线 */
+            margin-bottom: 4rem;
+            padding: 2.5rem 0;
+            background-color: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
         }
 
         .header h1 {
-            color: #4A90E2; /* 浅蓝主色 */
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            color: #2d88ff;
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            letter-spacing: -0.5px;
         }
 
         .header p {
-            color: #333;
-            font-size: 1.2rem;
-            margin: 0.3rem 0;
+            color: #666;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .header .contact {
-            margin-top: 1rem;
             font-size: 1rem;
-            color: #666;
+            color: #888;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
 
-        /* 技能进度条区域样式 */
-        .skills {
-            margin-bottom: 3rem;
-        }
-
-        .skills h2 {
-            color: #333;
+        .section-title {
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            padding-left: 0.5rem;
-            border-left: 4px solid #4A90E2;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 4px solid #2d88ff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -8px;
+            left: 1rem;
+            width: 60px;
+            height: 2px;
+            background-color: #2d88ff;
+        }
+
+        .skills {
+            margin-bottom: 4rem;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
         .skill-item {
-            margin-bottom: 1.2rem;
+            margin-bottom: 0;
         }
 
         .skill-item .skill-title {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
-            color: #333;
+            margin-bottom: 0.6rem;
+            color: #444;
             font-weight: 500;
+            font-size: 1.05rem;
         }
 
         .skill-bar {
             width: 100%;
-            height: 12px;
-            background-color: #e0e6ed;
-            border-radius: 6px;
+            height: 8px;
+            background-color: #e8edf3;
+            border-radius: 4px;
             overflow: hidden;
             position: relative;
-            cursor: pointer;
         }
 
         .skill-progress {
             height: 100%;
-            background: linear-gradient(to right, #4A90E2, #6bb6ff); /* 浅蓝渐变进度条 */
-            border-radius: 6px;
-            transition: width 0.5s ease;
+            background: #2d88ff;
+            border-radius: 4px;
+            transition: width 0.6s ease;
         }
 
         .skill-tip {
             position: absolute;
-            top: -35px;
-            left: calc(var(--progress) - 60px);
-            background-color: #333;
+            top: -30px;
+            left: calc(var(--progress) - 50px);
+            background-color: #2d88ff;
             color: #fff;
             padding: 4px 10px;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             opacity: 0;
             transition: opacity 0.3s ease;
             z-index: 10;
+            box-shadow: 0 2px 8px rgba(45, 136, 255, 0.3);
         }
 
         .skill-bar:hover .skill-tip {
             opacity: 1;
         }
 
-        /* 项目作品集区域样式（侯杰同款卡片式布局） */
         .projects {
-            margin-bottom: 3rem;
-        }
-
-        .projects h2 {
-            color: #333;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            padding-left: 0.5rem;
-            border-left: 4px solid #4A90E2;
+            margin-bottom: 4rem;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
         }
 
         .project-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 2rem;
         }
 
         .project-card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            padding: 1.5rem;
-            transition: transform 0.3s ease;
+            background-color: #f9fbff;
+            border: 1px solid #e8edf3;
+            border-radius: 12px;
+            padding: 1.8rem;
+            transition: all 0.4s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-6px);
+            box-shadow: 0 8px 24px rgba(45, 136, 255, 0.12);
+            border-color: #2d88ff;
         }
 
         .project-card h3 {
-            color: #4A90E2;
+            color: #2d88ff;
             font-size: 1.4rem;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #f0f0f0;
-            padding-bottom: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #e8edf3;
         }
 
         .project-img {
             width: 100%;
-            height: 280px;
-            background-color: #e0e6ed;
+            height: 260px;
+            background-color: #e8edf3;
             border-radius: 8px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #999;
+            color: #888;
             background-size: cover;
             background-position: center;
+            border: 1px solid #f0f4f9;
         }
 
         .project-info h4 {
             color: #333;
             font-size: 1.1rem;
-            margin-bottom: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
         }
 
         .project-info p {
+            color: #666;
             margin-bottom: 1rem;
-            padding-left: 0.5rem;
-            border-left: 2px solid #e0e6ed;
+            padding-left: 0.8rem;
+            border-left: 2px solid #e8edf3;
+            line-height: 1.6;
+            font-size: 1rem;
         }
 
-        /* 底部样式 */
         .footer {
             text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #e0e6ed;
-            color: #999;
-            font-size: 0.9rem;
+            padding: 2rem 0;
+            color: #888;
+            font-size: 0.95rem;
+            border-top: 1px solid #e8edf3;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .project-cards {
+                grid-template-columns: 1fr;
+            }
+            .skill-list {
+                grid-template-columns: 1fr;
+            }
+            .header .contact {
+                gap: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- 头部个人信息 -->
     <div class="header">
         <h1>章雨馨</h1>
         <p>前端开发爱好者 / 小程序项目实践者</p>
         <div class="contact">
-            邮箱：2926076094@qq.com | GitHub：moodnzhang
+            <span>邮箱：2926076094@qq.com</span>
+            <span>GitHub：moodnzhang</span>
         </div>
     </div>
 
-    <!-- 技能进度条区域 -->
     <div class="skills">
-        <h2>我的技能</h2>
-        <div class="skill-item">
-            <div class="skill-title">
-                <span>HTML5 / CSS3</span>
-                <span>90%</span>
+        <h2 class="section-title">我的技能</h2>
+        <div class="skill-list">
+            <div class="skill-item">
+                <div class="skill-title">
+                    <span>HTML5 / CSS3</span>
+                    <span>90%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 90%;" style="--progress: 90%"></div>
+                    <div class="skill-tip">掌握Flex布局、响应式设计、CSS3动画</div>
+                </div>
             </div>
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: 90%;" style="--progress: 90%"></div>
-                <div class="skill-tip">掌握Flex布局、响应式设计、CSS3动画</div>
+            <div class="skill-item">
+                <div class="skill-title">
+                    <span>Vue3</span>
+                    <span>92%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 92%;" style="--progress: 92%"></div>
+                    <div class="skill-tip">掌握组件通信、Pinia状态管理、Vue Router</div>
+                </div>
             </div>
-        </div>
-        <div class="skill-item">
-            <div class="skill-title">
-                <span>Vue3</span>
-                <span>92%</span>
+            <div class="skill-item">
+                <div class="skill-title">
+                    <span>Uni-app</span>
+                    <span>85%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 85%;" style="--progress: 85%"></div>
+                    <div class="skill-tip">熟练开发跨端小程序，掌握微信小程序原生API</div>
+                </div>
             </div>
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: 92%;" style="--progress: 92%"></div>
-                <div class="skill-tip">掌握组件通信、Pinia状态管理、Vue Router</div>
-            </div>
-        </div>
-        <div class="skill-item">
-            <div class="skill-title">
-                <span>Uni-app</span>
-                <span>85%</span>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: 85%;" style="--progress: 85%"></div>
-                <div class="skill-tip">熟练开发跨端小程序，掌握微信小程序原生API</div>
-            </div>
-        </div>
-        <div class="skill-item">
-            <div class="skill-title">
-                <span>JavaScript</span>
-                <span>88%</span>
-            </div>
-            <div class="skill-bar">
-                <div class="skill-progress" style="width: 88%;" style="--progress: 88%"></div>
-                <div class="skill-tip">掌握ES6+语法、异步编程、DOM操作</div>
+            <div class="skill-item">
+                <div class="skill-title">
+                    <span>JavaScript</span>
+                    <span>88%</span>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-progress" style="width: 88%;" style="--progress: 88%"></div>
+                    <div class="skill-tip">掌握ES6+语法、异步编程、DOM操作</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 项目作品集区域 -->
     <div class="projects">
-        <h2>我的项目</h2>
+        <h2 class="section-title">我的项目</h2>
         <div class="project-cards">
-            <!-- 智物小程序项目 -->
             <div class="project-card">
                 <h3>智物 - 物品管理与社区分享小程序</h3>
                 <div class="project-img">
-                    （此处替换为智物小程序截图，可直接替换为图片链接：background-image: url("你的截图链接");）
+                    background-image: url("截图链接");
                 </div>
                 <div class="project-info">
                     <h4>核心技术栈</h4>
@@ -258,11 +306,10 @@
                 </div>
             </div>
 
-            <!-- 宠爱家小程序项目 -->
             <div class="project-card">
                 <h3>宠爱家 - 宠物健康管理与社区小程序</h3>
                 <div class="project-img">
-                    （此处替换为宠爱家小程序截图，可直接替换为图片链接：background-image: url("你的截图链接");）
+                    background-image: url("截图链接");
                 </div>
                 <div class="project-info">
                     <h4>核心技术栈</h4>
@@ -276,13 +323,11 @@
         </div>
     </div>
 
-    <!-- 底部 -->
     <div class="footer">
         © 2026 章雨馨 前端作品集 | 部署于 GitHub Pages
     </div>
 
     <script>
-        // 为技能进度条绑定进度变量，实现提示框居中
         const skillBars = document.querySelectorAll('.skill-bar');
         skillBars.forEach(bar => {
             const progress = bar.querySelector('.skill-progress').style.width;
