@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>章雨馨 - 前端开发者作品集</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -13,7 +13,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#165DFF', // 主色调（保留你的高级蓝）
+                        primary: '#165DFF', // 主色调（保留高级蓝）
                         // 浅色模式
                         light: {
                             bg: '#F5F7FA',
@@ -50,6 +50,9 @@
                         // 技能节点发光阴影
                         'skill-glow': '0 0 15px rgba(22, 93, 255, 0.4)',
                         'dark-skill-glow': '0 0 20px rgba(64, 128, 255, 0.5)',
+                    },
+                    height: {
+                        '65': '16rem', // 统一项目图片高度，适配响应式
                     }
                 },
             }
@@ -60,7 +63,7 @@
             .content-auto {
                 content-visibility: auto;
             }
-            /* // 渐变文字（深浅色适配） */
+            /* 渐变文字（深浅色适配） */
             .text-gradient {
                 background-clip: text;
                 -webkit-background-clip: text;
@@ -73,7 +76,7 @@
             .card-animate {
                 transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
-            /* // 交互盒子hover效果 */
+            /* 交互盒子hover效果 */
             .interactive-box {
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             }
@@ -84,23 +87,23 @@
             .dark .interactive-box:hover {
                 box-shadow: 0 8px 25px rgba(64, 128, 255, 0.3);
             }
-            /* // 主题切换按钮动画 */
+            /* 主题切换按钮动画 */
             .toggle-dot {
                 transition: left 0.3s ease-in-out;
             }
             .icon-opacity {
                 transition: opacity 0.3s ease-in-out;
             }
-            /* // 导航链接选中样式 */
+            /* 导航链接选中样式 */
             .nav-link.active {
                 color: #165DFF;
-                font-medium: true;
+                font-weight: 500;
                 border-bottom: 2px solid #165DFF;
             }
             .nav-link {
                 transition: all 0.2s ease;
             }
-            /* // 技能标签悬停特效 */
+            /* 技能标签悬停特效 */
             .skill-tag {
                 transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             }
@@ -118,7 +121,7 @@
             .skill-tag:hover i {
                 color: white !important;
             }
-            /* // 个人信息卡标签悬停特效 */
+            /* 个人信息卡标签悬停特效 */
             .info-tag {
                 transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
                 border-radius: 8px;
@@ -146,16 +149,16 @@
             }
             .info-tag:hover .tag-label {
                 color: #165DFF !important;
-                font-medium: true;
+                font-weight: 500;
             }
             .info-tag .tag-value {
                 transition: all 0.3s ease;
             }
             .info-tag:hover .tag-value {
                 color: #165DFF !important;
-                font-semibold: true;
+                font-weight: 600;
             }
-            /* // 径向辐射图谱样式（修复位置错乱） */
+            /* 径向辐射图谱样式（修复位置错乱） */
             .skill-radial-container {
                 position: relative;
                 width: 100%;
@@ -228,14 +231,14 @@
             .dark .skill-node:hover {
                 box-shadow: var(--tw-shadow-dark-skill-glow);
             }
-            /* // 优势进度条动画 */
+            /* 优势进度条动画 */
             .advantage-progress {
                 transition: width 0.8s ease;
             }
             .advantage-item:hover .advantage-progress {
-                width: 100% !重要;
+                width: 100% !important;
             }
-            /* // 优势描述提示 */
+            /* 优势描述提示 */
             .advantage-tooltip {
                 opacity: 0;
                 transition: opacity 0.3s ease;
@@ -244,23 +247,44 @@
             .advantage-item:hover .advantage-tooltip {
                 opacity: 1;
             }
+            /* 移动端菜单滑动动画 */
+            .mobile-menu {
+                transition: all 0.3s ease-in-out;
+                max-height: 0;
+                overflow: hidden;
+            }
+            .mobile-menu.open {
+                max-height: 300px;
+            }
+            /* 触摸设备适配（移除hover，添加active效果） */
+            @media (hover: none) {
+                .interactive-box:hover {
+                    transform: none;
+                }
+                .skill-tag:hover {
+                    transform: none;
+                }
+                .card-animate:hover {
+                    transform: none;
+                }
+            }
         }
     </style>
 </head>
 <!-- 根元素：默认浅色，深色模式添加dark类 -->
 <body class="font-inter bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text min-h-screen transition-colors duration-300">
-    <!-- 导航栏 -->
+    <!-- 导航栏（优化响应式，添加移动端菜单） -->
     <nav class="fixed top-0 left-0 w-full bg-light-card/80 dark:bg-dark-card/80 backdrop-blur-md z-50 border-b border-light-border dark:border-dark-border transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16 items-center">
-                <!-- 左侧头像+名字 -->
+                <!-- 左侧头像+名字（响应式尺寸） -->
                 <div class="flex items-center gap-3">
-                    <img src="https://raw.githubusercontent.com/moodnzhang/zhangyuxin-fe/main/avatar.jpg" alt="章雨馨" class="w-10 h-10 rounded-full object-cover border-2 border-primary/20 dark:border-primary/30">
-                    <span class="font-bold text-xl text-primary">章雨馨</span>
+                    <img src="https://raw.githubusercontent.com/moodnzhang/zhangyuxin-fe/main/avatar.jpg" alt="章雨馨" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover border-2 border-primary/20 dark:border-primary/30">
+                    <span class="font-bold text-lg sm:text-xl text-primary">章雨馨</span>
                 </div>
 
-                <!-- 导航链接（首页/技能/教育/项目/联系）- 新增nav-link类和data-target属性 -->
-                <div class="hidden md:flex space-x-8 items-center">
+                <!-- 桌面端导航链接（隐藏移动端） -->
+                <div class="hidden md:flex space-x-6 sm:space-x-8 items-center">
                     <a href="#about" class="nav-link active text-primary font-medium border-b-2 border-primary px-1" data-target="about">首页</a>
                     <a href="#skills" class="nav-link text-light-lightText dark:text-dark-lightText hover:text-primary transition-colors" data-target="skills">技能</a>
                     <a href="#education" class="nav-link text-light-lightText dark:text-dark-lightText hover:text-primary transition-colors" data-target="education">教育</a>
@@ -268,110 +292,120 @@
                     <a href="#contact" class="nav-link text-light-lightText dark:text-dark-lightText hover:text-primary transition-colors" data-target="contact">联系</a>
                 </div>
 
-                <!-- 主题切换按钮（修复后） -->
-                <div class="flex items-center">
-                    <button id="themeToggle" class="w-12 h-6 bg-gray-200 dark:bg-primary/30 rounded-full relative flex items-center px-1 cursor-pointer" title="Toggle theme">
+                <!-- 主题切换按钮（响应式优化，适配小屏幕） -->
+                <div class="flex items-center gap-4">
+                    <button id="themeToggle" class="w-10 h-5 sm:w-12 sm:h-6 bg-gray-200 dark:bg-primary/30 rounded-full relative flex items-center px-1 cursor-pointer" title="Toggle theme">
                         <!-- 切换圆点：用Tailwind类控制位置，不再用内联style -->
-                        <div id="toggleDot" class="toggle-dot w-4 h-4 bg-white dark:bg-primary rounded-full absolute left-1 transition-all duration-300"></div>
-                        <!-- 太阳/月亮图标（保持原逻辑） -->
-                        <i class="fa fa-sun-o text-yellow-400 absolute left-1 icon-opacity opacity-100 dark:opacity-0"></i>
-                        <i class="fa fa-moon-o text-blue-300 absolute right-1 icon-opacity opacity-0 dark:opacity-100"></i>
+                        <div id="toggleDot" class="toggle-dot w-3 h-3 sm:w-4 sm:h-4 bg-white dark:bg-primary rounded-full absolute left-1 transition-all duration-300"></div>
+                        <!-- 太阳/月亮图标（响应式尺寸） -->
+                        <i class="fa fa-sun-o text-yellow-400 absolute left-1 icon-opacity opacity-100 dark:opacity-0 text-xs sm:text-sm"></i>
+                        <i class="fa fa-moon-o text-blue-300 absolute right-1 icon-opacity opacity-0 dark:opacity-100 text-xs sm:text-sm"></i>
+                    </button>
+
+                    <!-- 移动端菜单按钮（仅移动端显示） -->
+                    <button id="mobileMenuBtn" class="md:hidden text-light-lightText dark:text-dark-lightText hover:text-primary" title="Open navigation menu">
+                        <i class="fa fa-bars text-lg sm:text-xl"></i>
                     </button>
                 </div>
+            </div>
 
-                <!-- 移动端菜单按钮 -->
-                <div class="md:hidden">
-                    <button class="text-light-lightText dark:text-dark-lightText hover:text-primary" title="Open navigation menu">
-                        <i class="fa fa-bars text-xl"></i>
-                    </button>
+            <!-- 移动端导航菜单（默认隐藏，点击展开） -->
+            <div id="mobileMenu" class="mobile-menu md:hidden bg-light-card dark:bg-dark-card border-b border-light-border dark:border-dark-border py-2">
+                <div class="flex flex-col space-y-3 px-4 pb-3">
+                    <a href="#about" class="nav-link active text-primary font-medium py-2" data-target="about">首页</a>
+                    <a href="#skills" class="nav-link text-light-lightText dark:text-dark-lightText hover:text-primary py-2" data-target="skills">技能</a>
+                    <a href="#education" class="nav-link text-light-lightText dark:text-dark-lightText hover:text-primary py-2" data-target="education">教育</a>
+                    <a href="#projects" class="nav-link text-light-lightText dark:text-dark-lightText hover:text-primary py-2" data-target="projects">项目</a>
+                    <a href="#contact" class="nav-link text-light-lightText dark:text-dark-lightText hover:text-primary py-2" data-target="contact">联系</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- 首页 -->
-    <section id="about" class="pt-32 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6">
-                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight">
+    <!-- 首页（响应式优化：网格、按钮、间距） -->
+    <section id="about" class="pt-24 sm:pt-32 pb-16 sm:pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div class="space-y-4 sm:space-y-6 order-2 md:order-1">
+                <h1 class="text-[clamp(1.5rem,4vw,3.5rem)] font-bold leading-tight">
                     嗨，我是<span class="text-gradient">章雨馨</span>
                     <br>前端开发工程师
                 </h1>
-                <p class="text-light-lightText dark:text-dark-lightText text-lg max-w-lg">
+                <p class="text-light-lightText dark:text-dark-lightText text-base sm:text-lg max-w-lg">
                 以负责人身份，统筹小程序从调研立项、技术选型到开发落地的全流程。
                 兼具技术开发、项目策划、团队协调能力，学习力强，求职方向多元，期待共创价值。
                 热爱探索前沿技术并落地到实际项目中。
                 </p>
 
-                <!-- 可交互技能标签盒子 - 新增skill-tag类 -->
-                <div class="flex flex-wrap gap-3 pt-2">
-                    <div class="interactive-box skill-tag bg-light-card dark:bg-dark-card px-4 py-2 rounded-lg border border-light-border dark:border-dark-border flex items-center gap-2 shadow-interactive">
+                <!-- 可交互技能标签盒子（响应式换行，缩小移动端内边距） -->
+                <div class="flex flex-wrap gap-2 sm:gap-3 pt-2">
+                    <div class="interactive-box skill-tag bg-light-card dark:bg-dark-card px-3 sm:px-4 py-2 rounded-lg border border-light-border dark:border-dark-border flex items-center gap-2 shadow-interactive text-sm sm:text-base">
                         <i class="fa fa-code text-primary"></i>
                         <span>Vue3</span>
                     </div>
-                    <div class="interactive-box skill-tag bg-light-card dark:bg-dark-card px-4 py-2 rounded-lg border border-light-border dark:border-dark-border flex items-center gap-2 shadow-interactive">
+                    <div class="interactive-box skill-tag bg-light-card dark:bg-dark-card px-3 sm:px-4 py-2 rounded-lg border border-light-border dark:border-dark-border flex items-center gap-2 shadow-interactive text-sm sm:text-base">
                         <i class="fa fa-mobile text-primary"></i>
                         <span>Uni-app</span>
                     </div>
-                    <div class="interactive-box skill-tag bg-light-card dark:bg-dark-card px-4 py-2 rounded-lg border border-light-border dark:border-dark-border flex items-center gap-2 shadow-interactive">
+                    <div class="interactive-box skill-tag bg-light-card dark:bg-dark-card px-3 sm:px-4 py-2 rounded-lg border border-light-border dark:border-dark-border flex items-center gap-2 shadow-interactive text-sm sm:text-base">
                         <i class="fa fa-html5 text-primary"></i>
                         <span>HTML5/CSS3</span>
                     </div>
-                    <div class="interactive-box skill-tag bg-light-card dark:bg-dark-card px-4 py-2 rounded-lg border border-light-border dark:border-dark-border flex items-center gap-2 shadow-interactive">
+                    <div class="interactive-box skill-tag bg-light-card dark:bg-dark-card px-3 sm:px-4 py-2 rounded-lg border border-light-border dark:border-dark-border flex items-center gap-2 shadow-interactive text-sm sm:text-base">
                         <i class="fa fa-js text-primary"></i>
                         <span>JavaScript</span>
                     </div>
                 </div>
 
-                <div class="flex space-x-4 pt-4">
-                    <a href="#projects" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors shadow-lg">
+                <!-- 按钮组（移动端竖向排列，桌面端横向） -->
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-2 sm:pt-4">
+                    <a href="#projects" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors shadow-lg text-center">
                         查看作品 <i class="fa fa-arrow-right ml-2"></i>
                     </a>
-                    <a href="#contact" class="border border-primary text-primary bg-transparent dark:bg-dark-card px-6 py-3 rounded-lg hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors">
+                    <a href="#contact" class="border border-primary text-primary bg-transparent dark:bg-dark-card px-6 py-3 rounded-lg hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors text-center">
                         联系我
                     </a>
                 </div>
 
-                <div class="flex space-x-6 pt-8">
-                    <a href="https://github.com/moodnzhang" class="text-light-lightText dark:text-dark-lightText hover:text-primary text-2xl transition-colors">
+                <div class="flex space-x-6 pt-6 sm:pt-8">
+                    <a href="https://github.com/moodnzhang" class="text-light-lightText dark:text-dark-lightText hover:text-primary text-xl sm:text-2xl transition-colors">
                         <i class="fa fa-github"></i>
                     </a>
-                    <a href="mailto:2926076094@qq.com" class="text-light-lightText dark:text-dark-lightText hover:text-primary text-2xl transition-colors">
+                    <a href="mailto:2926076094@qq.com" class="text-light-lightText dark:text-dark-lightText hover:text-primary text-xl sm:text-2xl transition-colors">
                         <i class="fa fa-envelope"></i>
                     </a>
                 </div>
             </div>
 
-            <!-- 右侧个人信息卡 -->
-            <div class="relative">
-                <div class="w-full bg-light-card dark:bg-dark-card rounded-2xl shadow-card dark:shadow-dark-card p-8 flex flex-col items-center space-y-6 transition-colors duration-300">
-                    <img src="https://raw.githubusercontent.com/moodnzhang/zhangyuxin-fe/main/avatar.jpg" alt="章雨馨" class="w-48 h-48 rounded-full object-cover border-4 border-primary/20 dark:border-primary/30">
-                    <h3 class="text-2xl font-bold text-light-text dark:text-dark-text">章雨馨</h3>
-                    <p class="text-primary font-medium">前端开发实践者</p>
+            <!-- 右侧个人信息卡（移动端优先显示，调整尺寸） -->
+            <div class="relative order-1 md:order-2">
+                <div class="w-full bg-light-card dark:bg-dark-card rounded-2xl shadow-card dark:shadow-dark-card p-6 sm:p-8 flex flex-col items-center space-y-4 sm:space-y-6 transition-colors duration-300">
+                    <img src="https://raw.githubusercontent.com/moodnzhang/zhangyuxin-fe/main/avatar.jpg" alt="章雨馨" class="w-32 h-32 sm:w-48 sm:h-48 rounded-full object-cover border-4 border-primary/20 dark:border-primary/30">
+                    <h3 class="text-xl sm:text-2xl font-bold text-light-text dark:text-dark-text">章雨馨</h3>
+                    <p class="text-primary font-medium text-sm sm:text-base">前端开发实践者</p>
                     
-                    <div class="w-full grid grid-cols-2 gap-4 pt-4 border-t border-light-border dark:border-dark-border">
-                        <!-- 获奖数量 - 新增info-tag类 -->
+                    <div class="w-full grid grid-cols-2 gap-3 sm:gap-4 pt-4 border-t border-light-border dark:border-dark-border">
+                        <!-- 获奖数量 -->
                         <div class="flex flex-col items-center info-tag">
-                            <i class="fa fa-calendar text-primary text-xl mb-2"></i>
-                            <span class="text-light-lightText dark:text-dark-lightText text-sm tag-label">获奖数量</span>
+                            <i class="fa fa-calendar text-primary text-lg sm:text-xl mb-2"></i>
+                            <span class="text-light-lightText dark:text-dark-lightText text-xs sm:text-sm tag-label">获奖数量</span>
                             <span class="text-light-text dark:text-dark-text font-medium tag-value">4项+</span>
                         </div>
-                        <!-- 核心项目 - 新增info-tag类 -->
+                        <!-- 核心项目 -->
                         <div class="flex flex-col items-center info-tag">
-                            <i class="fa fa-folder-open text-primary text-xl mb-2"></i>
-                            <span class="text-light-lightText dark:text-dark-lightText text-sm tag-label">核心项目</span>
+                            <i class="fa fa-folder-open text-primary text-lg sm:text-xl mb-2"></i>
+                            <span class="text-light-lightText dark:text-dark-lightText text-xs sm:text-sm tag-label">核心项目</span>
                             <span class="text-light-text dark:text-dark-text font-medium tag-value">2+</span>
                         </div>
-                        <!-- 学历 - 新增info-tag类 -->
+                        <!-- 学历 -->
                         <div class="flex flex-col items-center info-tag">
-                            <i class="fa fa-graduation-cap text-primary text-xl mb-2"></i>
-                            <span class="text-light-lightText dark:text-dark-lightText text-sm tag-label">学历</span>
+                            <i class="fa fa-graduation-cap text-primary text-lg sm:text-xl mb-2"></i>
+                            <span class="text-light-lightText dark:text-dark-lightText text-xs sm:text-sm tag-label">学历</span>
                             <span class="text-light-text dark:text-dark-text font-medium tag-value">本科</span>
                         </div>
-                        <!-- 所在地 - 新增info-tag类 -->
+                        <!-- 所在地 -->
                         <div class="flex flex-col items-center info-tag">
-                            <i class="fa fa-map-marker text-primary text-xl mb-2"></i>
-                            <span class="text-light-lightText dark:text-dark-lightText text-sm tag-label">所在地</span>
+                            <i class="fa fa-map-marker text-primary text-lg sm:text-xl mb-2"></i>
+                            <span class="text-light-lightText dark:text-dark-lightText text-xs sm:text-sm tag-label">所在地</span>
                             <span class="text-light-text dark:text-dark-text font-medium tag-value">四川 · 成都</span>
                         </div>
                     </div>
@@ -380,165 +414,168 @@
         </div>
     </section>
 
-
-    <!-- 技能区 -->
-    <section id="skills" class="py-16 bg-light-card dark:bg-dark-card transition-colors duration-300 scroll-mt-20">
+    <!-- 技能区（响应式优化：双栏改单栏，卡片内边距调整） -->
+    <section id="skills" class="py-12 sm:py-16 bg-light-card dark:bg-dark-card transition-colors duration-300 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- 标题区域：缩小上下间距，优化字体层级 -->
-            <div class="text-center mb-12">
-                <h2 class="text-[clamp(1.6rem,3.5vw,2.2rem)] font-bold">我的<span class="text-gradient">技能与优势</span></h2>
-                <p class="text-light-lightText dark:text-dark-lightText max-w-2xl mx-auto pt-3 text-base">
+            <!-- 标题区域 -->
+            <div class="text-center mb-8 sm:mb-12">
+                <h2 class="text-[clamp(1.4rem,3vw,2.2rem)] font-bold">我的<span class="text-gradient">技能与优势</span></h2>
+                <p class="text-light-lightText dark:text-dark-lightText max-w-2xl mx-auto pt-3 text-sm sm:text-base">
                     深耕技术能力，沉淀核心优势，助力项目落地
                 </p>
             </div>
 
-            <!-- 双栏核心布局：调整gap，优化响应式适配 -->
-            <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
-                <!-- 左栏：专业技能（优化间距、尺寸、视觉层级） -->
-                <div class="bg-light-bg dark:bg-dark-bg rounded-xl shadow-card dark:shadow-dark-card p-6 transition-colors duration-300">
-                    <!-- 技能标题：缩小图标+文字间距，优化对齐 -->
-                    <h3 class="text-lg font-bold mb-6 flex items-center gap-2 justify-center">
-                        <i class="fa fa-code text-primary text-xl"></i>
+            <!-- 双栏核心布局（移动端单栏，桌面端双栏） -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
+                <!-- 左栏：专业技能 -->
+                <div class="bg-light-bg dark:bg-dark-bg rounded-xl shadow-card dark:shadow-dark-card p-4 sm:p-6 transition-colors duration-300">
+                    <!-- 技能标题 -->
+                    <h3 class="text-base sm:text-lg font-bold mb-4 sm:mb-6 flex items-center gap-2 justify-center">
+                        <i class="fa fa-code text-primary text-lg sm:text-xl"></i>
                         <span>专业技能</span>
                     </h3>
 
-                    <!-- 专业技能列表：优化间距、进度条尺寸、文字大小 -->
-                    <div class="space-y-5">
-                        <!-- 技能项通用结构：缩小垂直间距，调整文字层级 -->
+                    <!-- 专业技能列表 -->
+                    <div class="space-y-4 sm:space-y-5">
+                        <!-- 技能项：Vue3 -->
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-sitemap text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">Vue3</span>
+                                <i class="fa fa-sitemap text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">Vue3</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">Vue3</span>
                                 <span class="text-primary font-medium">80%</span>
                             </div>
                             <!-- 进度条 -->
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[80%] transition-all duration-800"></div>
                             </div>
                             <!-- 提示文本 -->
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 熟练使用组合式API，实现组件化项目开发
                             </p>
                         </div>
 
+                        <!-- 技能项：Uni-app -->
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-mobile text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">Uni-app 跨端开发</span>
+                                <i class="fa fa-mobile text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">Uni-app 跨端开发</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">小程序 + H5 + App</span>
                                 <span class="text-primary font-medium">85%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[85%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 一套代码多端运行，熟练处理跨端兼容，优化小程序性能
                             </p>
                         </div>
 
+                        <!-- 技能项：HTML5/CSS3 -->
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-html5 text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">HTML5/CSS3 核心</span>
+                                <i class="fa fa-html5 text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">HTML5/CSS3 核心</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">Flex + Grid + 动画</span>
                                 <span class="text-primary font-medium">92%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[92%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 语义化HTML，CSS3布局/动画，实现响应式页面
                             </p>
                         </div>
 
+                        <!-- 技能项：JavaScript -->
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-star text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">JavaScript</span>
+                                <i class="fa fa-star text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">JavaScript</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">Promise + 解构 + 模块化</span>
                                 <span class="text-primary font-medium">88%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[88%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 掌握核心语法，编写高效可维护代码
                             </p>
                         </div>
 
+                        <!-- 其他技能项省略（保持原有结构，仅调整响应式文字尺寸） -->
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-rocket text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">Python 编程</span>
+                                <i class="fa fa-rocket text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">Python 编程</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">数据处理 + 脚本开发</span>
                                 <span class="text-primary font-medium">75%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[75%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 基础语法，数据处理脚本，辅助项目落地
                             </p>
                         </div>
 
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-book text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">C/C++ 编程</span>
+                                <i class="fa fa-book text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">C/C++ 编程</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">算法实现 + 底层理解</span>
                                 <span class="text-primary font-medium">90%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[90%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 核心语法，经典算法实现，理解程序底层逻辑
                             </p>
                         </div>
 
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-database text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">MySQL 数据库</span>
+                                <i class="fa fa-database text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">MySQL 数据库</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">SQL查询 + 表结构设计</span>
                                 <span class="text-primary font-medium">90%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[90%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 SQL查询，表结构设计，实现数据增删改查
                             </p>
                         </div>
 
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-search text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">工程化 & AI 工具</span>
+                                <i class="fa fa-search text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">工程化 & AI 工具</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">Git + Cursor AI</span>
                                 <span class="text-primary font-medium">93%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[93%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 Git版本管理，Cursor提升代码编写/排障效率
                             </p>
                         </div>
@@ -546,133 +583,135 @@
                 </div>
 
                 <!-- 右栏：个人优势 -->
-                <div class="bg-light-bg dark:bg-dark-bg rounded-xl shadow-card dark:shadow-dark-card p-6 transition-colors duration-300">
-                    <h3 class="text-lg font-bold mb-6 flex items-center gap-2 justify-center">
-                        <i class="fa fa-star text-primary text-xl"></i>
+                <div class="bg-light-bg dark:bg-dark-bg rounded-xl shadow-card dark:shadow-dark-card p-4 sm:p-6 transition-colors duration-300">
+                    <h3 class="text-base sm:text-lg font-bold mb-4 sm:mb-6 flex items-center gap-2 justify-center">
+                        <i class="fa fa-star text-primary text-lg sm:text-xl"></i>
                         <span>个人优势</span>
                     </h3>
 
                     <!-- 优势列表 -->
-                    <div class="space-y-5">
+                    <div class="space-y-4 sm:space-y-5">
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-rocket text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">技术开发</span>
+                                <i class="fa fa-rocket text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">技术开发</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">多端落地 + 问题排查</span>
                                 <span class="text-primary font-medium">75%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[75%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 深耕前端，多端适配，快速排查技术问题
                             </p>
                         </div>
 
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-sitemap text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">项目策划</span>
+                                <i class="fa fa-sitemap text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">项目策划</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">需求梳理 + 流程把控</span>
                                 <span class="text-primary font-medium">80%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[80%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 从0到1梳理需求，把控项目进度与质量
                             </p>
                         </div>
 
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-users text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">团队协调</span>
+                                <i class="fa fa-users text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">团队协调</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">分工协作 + 高效沟通</span>
                                 <span class="text-primary font-medium">90%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[90%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 高效沟通分工，推动团队目标达成
                             </p>
                         </div>
 
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-book text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">学习能力</span>
+                                <i class="fa fa-book text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">学习能力</span>
                             </div>
                             <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">快速迭代 + 场景适配</span>
                                 <span class="text-primary font-medium">95%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[95%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 快速掌握新工具/框架，适配新场景需求
                             </p>
                         </div>
 
                         <div class="advantage-item">
                             <div class="flex items-center gap-2 mb-1">
-                                <i class="fa fa-search text-primary text-lg w-5 text-center"></i>
-                                <span class="font-medium text-sm">细节把控</span>
+                                <i class="fa fa-search text-primary text-base sm:text-lg w-5 text-center"></i>
+                                <span class="font-medium text-xs sm:text-sm">细节把控</span>
                             </div>
-                            <div class="flex justify之间 items-center mb-1 text-xs">
+                            <div class="flex justify-between items-center mb-1 text-xs">
                                 <span class="text-light-lightText dark:text-dark-lightText">UI还原 + 性能优化</span>
                                 <span class="text-primary font-medium">88%</span>
                             </div>
-                            <div class="h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
+                            <div class="h-1 sm:h-1.5 bg-light-border dark:bg-dark-border rounded-full overflow-hidden">
                                 <div class="advantage-progress h-full bg-primary rounded-full w-[88%] transition-all duration-800"></div>
                             </div>
-                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1.5 leading-relaxed">
+                            <p class="advantage-tooltip text-xs text-light-lightText dark:text-dark-lightText mt-1 sm:mt-1.5 leading-relaxed">
                                 高保真还原设计，优化页面性能与体验
                             </p>
                         </div>
                     </div>
 
-                    <!-- 调整后：三个盒子横向不换行排列 -->
-                    <div class="flex flex-nowrap justify-between gap-3 mt-8 pt-6 border-t border-light-border dark:border-dark-border">
-                        <!-- 高效开发 -->
-                        <div class="bg-white dark:bg-dark-card rounded-xl p-4 flex flex-col items-center text-center flex-1 min-w-[120px] shadow-sm transition-transform hover:-translate-y-1 duration-300">
-                            <div class="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mb-3">
-                                <i class="fa fa-rocket text-blue-500 text-xl"></i>
+                    <!-- 三个盒子（移动端横向滚动，桌面端均分） -->
+                    <div class="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-light-border dark:border-dark-border">
+                        <div class="flex gap-3 overflow-x-auto pb-3 sm:overflow-x-hidden sm:pb-0 sm:flex-nowrap justify-between">
+                            <!-- 高效开发 -->
+                            <div class="bg-white dark:bg-dark-card rounded-xl p-3 sm:p-4 flex flex-col items-center text-center flex-1 min-w-[100px] sm:min-w-[120px] shadow-sm transition-transform hover:-translate-y-1 duration-300">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mb-2 sm:mb-3">
+                                    <i class="fa fa-rocket text-blue-500 text-lg sm:text-xl"></i>
+                                </div>
+                                <h4 class="font-medium text-xs sm:text-sm mb-1">高效开发</h4>
+                                <p class="text-xs text-light-lightText dark:text-dark-lightText leading-tight">
+                                    熟练使用现代前端工具链，提升开发效率和代码质量
+                                </p>
                             </div>
-                            <h4 class="font-medium text-sm mb-1">高效开发</h4>
-                            <p class="text-xs text-light-lightText dark:text-dark-lightText leading-tight">
-                                熟练使用现代前端工具链，提升开发效率和代码质量
-                            </p>
-                        </div>
 
-                        <!-- UI/UX设计 -->
-                        <div class="bg-white dark:bg-dark-card rounded-xl p-4 flex flex-col items-center text-center flex-1 min-w-[120px] shadow-sm transition-transform hover:-translate-y-1 duration-300">
-                            <div class="w-12 h-12 rounded-full bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center mb-3">
-                                <i class="fa fa-paint-brush text-purple-500 text-xl"></i>
+                            <!-- UI/UX设计 -->
+                            <div class="bg-white dark:bg-dark-card rounded-xl p-3 sm:p-4 flex flex-col items-center text-center flex-1 min-w-[100px] sm:min-w-[120px] shadow-sm transition-transform hover:-translate-y-1 duration-300">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center mb-2 sm:mb-3">
+                                    <i class="fa fa-paint-brush text-purple-500 text-lg sm:text-xl"></i>
+                                </div>
+                                <h4 class="font-medium text-xs sm:text-sm mb-1">UI/UX设计</h4>
+                                <p class="text-xs text-light-lightText dark:text-dark-lightText leading-tight">
+                                    注重用户体验设计，创造美观且易用的界面
+                                </p>
                             </div>
-                            <h4 class="font-medium text-sm mb-1">UI/UX设计</h4>
-                            <p class="text-xs text-light-lightText dark:text-dark-lightText leading-tight">
-                                注重用户体验设计，创造美观且易用的界面
-                            </p>
-                        </div>
 
-                        <!-- 性能优化 -->
-                        <div class="bg-white dark:bg-dark-card rounded-xl p-4 flex flex-col items-center text-center flex-1 min-w-[120px] shadow-sm transition-transform hover:-translate-y-1 duration-300">
-                            <div class="w-12 h-12 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center mb-3">
-                                <i class="fa fa-cogs text-green-500 text-xl"></i>
+                            <!-- 性能优化 -->
+                            <div class="bg-white dark:bg-dark-card rounded-xl p-3 sm:p-4 flex flex-col items-center text-center flex-1 min-w-[100px] sm:min-w-[120px] shadow-sm transition-transform hover:-translate-y-1 duration-300">
+                                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center mb-2 sm:mb-3">
+                                    <i class="fa fa-cogs text-green-500 text-lg sm:text-xl"></i>
+                                </div>
+                                <h4 class="font-medium text-xs sm:text-sm mb-1">性能优化</h4>
+                                <p class="text-xs text-light-lightText dark:text-dark-lightText leading-tight">
+                                    深度优化前端性能，确保最佳的用户体验
+                                </p>
                             </div>
-                            <h4 class="font-medium text-sm mb-1">性能优化</h4>
-                            <p class="text-xs text-light-lightText dark:text-dark-lightText leading-tight">
-                                深度优化前端性能，确保最佳的用户体验
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -680,137 +719,133 @@
         </div>
     </section>
 
-    <!-- 教育背景模块 -->
-    <section id="education" class="py-20 bg-light-bg dark:bg-dark-bg transition-colors duration-300 scroll-mt-20">
+    <!-- 教育背景模块（响应式优化：三栏改单栏，卡片间距调整） -->
+    <section id="education" class="py-16 sm:py-20 bg-light-bg dark:bg-dark-bg transition-colors duration-300 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold">我的<span class="text-gradient">教育背景</span></h2>
-                <p class="text-light-lightText dark:text-dark-lightText max-w-2xl mx-auto pt-4">深耕专业，以赛促学，沉淀综合能力</p>
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold">我的<span class="text-gradient">教育背景</span></h2>
+                <p class="text-light-lightText dark:text-dark-lightText max-w-2xl mx-auto pt-3 sm:pt-4 text-sm sm:text-base">深耕专业，以赛促学，沉淀综合能力</p>
             </div>
 
-            <!-- 核心教育区域：-->
-            <div class="mx-auto space-y-12">
+            <!-- 核心教育区域 -->
+            <div class="mx-auto space-y-8 sm:space-y-12">
                 <!-- 学校基础信息卡片 -->
-                <div class="bg-light-card dark:bg-dark-card rounded-xl shadow-card dark:shadow-dark-card p-8 card-animate hover:shadow-card-hover dark:hover:shadow-dark-card-hover hover:-translate-y-2 transition-colors duration-300">
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-                        <!-- 学校图标-->
-                        <div class="w-14 h-14 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary flex-shrink-0">
-                            <i class="fa fa-university text-2xl"></i>
+                <div class="bg-light-card dark:bg-dark-card rounded-xl shadow-card dark:shadow-dark-card p-6 sm:p-8 card-animate hover:shadow-card-hover dark:hover:shadow-dark-card-hover hover:-translate-y-2 transition-colors duration-300">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+                        <!-- 学校图标 -->
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                            <i class="fa fa-university text-xl sm:text-2xl"></i>
                         </div>
                         <div class="flex-1">
                             <div class="flex flex-wrap justify-between items-center gap-4">
-                                <h3 class="text-2xl font-bold text-light-text dark:text-dark-text">西华师范大学</h3>
+                                <h3 class="text-xl sm:text-2xl font-bold text-light-text dark:text-dark-text">西华师范大学</h3>
                                 <!-- 时间标签 -->
-                                <span class="px-4 py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-sm rounded-full flex items-center gap-1">
+                                <span class="px-3 sm:px-4 py-1 sm:py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-xs sm:text-sm rounded-full flex items-center gap-1">
                                     <i class="fa fa-calendar-o"></i> 2022.09 - 2026.06
                                 </span>
                             </div>
-                            <p class="text-primary font-medium mt-2 text-lg">软件工程 | 本科</p>
-                            <p class="text-light-lightText dark:text-dark-lightText mt-3 max-w-3xl">
+                            <p class="text-primary font-medium mt-2 text-base sm:text-lg">软件工程 | 本科</p>
+                            <p class="text-light-lightText dark:text-dark-lightText mt-3 max-w-3xl text-sm sm:text-base">
                                 主修前端开发、算法设计、数据库等核心课程，专业成绩优异，多次获校级及国家级奖项，兼顾技术能力与综合素养提升
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- 分类展示卡片组-->
-                <div class="grid md:grid-cols-3 gap-8">
+                <!-- 分类展示卡片组（移动端单栏，桌面端三栏） -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
                     <!-- 主修课程卡片 -->
-                    <div class="bg-light-card dark:bg-dark-card rounded-xl shadow-card dark:shadow-dark-card p-8 card-animate hover:shadow-card-hover dark:hover:shadow-dark-card-hover transition-colors duration-300">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center text-blue-500">
-                                <i class="fa fa-book text-xl"></i>
+                    <div class="bg-light-card dark:bg-dark-card rounded-xl shadow-card dark:shadow-dark-card p-6 sm:p-8 card-animate hover:shadow-card-hover dark:hover:shadow-dark-card-hover transition-colors duration-300">
+                        <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-blue-50 dark:bg-blue-900/20 rounded-full flex items-center justify-center text-blue-500">
+                                <i class="fa fa-book text-lg sm:text-xl"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-light-text dark:text-dark-text">主修课程</h3>
+                            <h3 class="text-lg sm:text-xl font-bold text-light-text dark:text-dark-text">主修课程</h3>
                         </div>
-                        <div class="space-y-4">
+                        <div class="space-y-3 sm:space-y-4">
                             <div class="flex justify-between items-center">
-                                <span class="text-light-text dark:text-dark-text">算法分析与设计</span>
-                                <span class="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-sm rounded-full">93分</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">算法分析与设计</span>
+                                <span class="px-2 sm:px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs rounded-full">93分</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-light-text dark:text-dark-text">Java Web应用开发</span>
-                                <span class="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-sm rounded-full">91分</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">Java Web应用开发</span>
+                                <span class="px-2 sm:px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs rounded-full">91分</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-light-text dark:text-dark-text">软件过程与项目管理</span>
-                                <span class="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-sm rounded-full">92分</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">软件过程与项目管理</span>
+                                <span class="px-2 sm:px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs rounded-full">92分</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-light-text dark:text-dark-text">Web前端设计</span>
-                                <span class="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-sm rounded-full">88分</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">Web前端设计</span>
+                                <span class="px-2 sm:px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs rounded-full">88分</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="text-light-text dark:text-dark-text">数据库系统原理</span>
-                                <span class="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-sm rounded-full">87分</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">数据库系统原理</span>
+                                <span class="px-2 sm:px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs rounded-full">87分</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- 比赛证书卡片 -->
-                    <div class="bg-light-card dark:bg-dark-card rounded-xl shadow-card dark:shadow-dark-card p-8 card-animate hover:shadow-card-hover dark:hover:shadow-dark-card-hover transition-colors duration-300">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-12 h-12 bg-purple-50 dark:bg-purple-900/20 rounded-full flex items-center justify-center text-purple-500">
-                                <i class="fa fa-trophy text-xl"></i>
+                    <div class="bg-light-card dark:bg-dark-card rounded-xl shadow-card dark:shadow-dark-card p-6 sm:p-8 card-animate hover:shadow-card-hover dark:hover:shadow-dark-card-hover transition-colors duration-300">
+                        <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-purple-50 dark:bg-purple-900/20 rounded-full flex items-center justify-center text-purple-500">
+                                <i class="fa fa-trophy text-lg sm:text-xl"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-light-text dark:text-dark-text">比赛证书</h3>
+                            <h3 class="text-lg sm:text-xl font-bold text-light-text dark:text-dark-text">比赛证书</h3>
                         </div>
-                        <div class="space-y-4">
+                        <div class="space-y-3 sm:space-y-4">
                             <div class="flex items-center gap-3">
                                 <i class="fa fa-certificate text-blue-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">MathorCup数学建模 国家二等奖</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">MathorCup数学建模 国家二等奖</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fa fa-certificate text-blue-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">计算机设计大赛 省三等奖（2次）</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">计算机设计大赛 省三等奖（2次）</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fa fa-certificate text-blue-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">移动创新赛 省三等奖</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">移动创新赛 省三等奖</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fa fa-certificate text-blue-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">蓝桥杯 省三等奖（2次）</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">蓝桥杯 省三等奖（2次）</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fa fa-certificate text-blue-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">CET-6 证书</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">CET-6 证书</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- 荣誉奖项卡片 -->
-                    <div class="bg-light-card dark:bg-dark-card rounded-xl shadow-card dark:shadow-dark-card p-8 card-animate hover:shadow-card-hover dark:hover:shadow-dark-card-hover transition-colors duration-300">
-                        <div class="flex items-center gap-4 mb-6">
-                            <div class="w-12 h-12 bg-amber-50 dark:bg-amber-900/20 rounded-full flex items-center justify-center text-amber-500">
-                                <i class="fa fa-star text-xl"></i>
+                    <div class="bg-light-card dark:bg-dark-card rounded-xl shadow-card dark:shadow-dark-card p-6 sm:p-8 card-animate hover:shadow-card-hover dark:hover:shadow-dark-card-hover transition-colors duration-300">
+                        <div class="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                            <div class="w-10 h-10 sm:w-12 sm:h-12 bg-amber-50 dark:bg-amber-900/20 rounded-full flex items-center justify-center text-amber-500">
+                                <i class="fa fa-star text-lg sm:text-xl"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-light-text dark:text-dark-text">荣誉奖项</h3>
+                            <h3 class="text-lg sm:text-xl font-bold text-light-text dark:text-dark-text">荣誉奖项</h3>
                         </div>
-                        <div class="space-y-4">
+                        <div class="space-y-3 sm:space-y-4">
                             <div class="flex items-center gap-3">
                                 <i class="fa fa-user-circle text-indigo-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">国家励志奖学金</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">国家励志奖学金</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fa fa-user-circle text-indigo-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">学校专业奖学金（6次）</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">学校专业奖学金（6次）</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fa fa-user-circle text-indigo-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">优秀毕业生</span>
-                            </div>
-                            <div class="flex items中心 gap-3">
-                                <i class="fa fa-user-circle text-indigo-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">优秀共青团干部、优秀学生干部</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">优秀毕业生</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fa fa-user-circle text-indigo-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">三好学生</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">优秀共青团干部、优秀学生干部</span>
                             </div>
                             <div class="flex items-center gap-3">
                                 <i class="fa fa-user-circle text-indigo-500 w-5 text-center"></i>
-                                <span class="text-light-text dark:text-dark-text">计算机学院学生支部副书记、优秀党员</span>
+                                <span class="text-light-text dark:text-dark-text text-sm">三好学生</span>
                             </div>
                         </div>
                     </div>
@@ -819,98 +854,98 @@
         </div>
     </section>
 
-    <!-- 项目模块完整区域（可直接替换） -->
-    <section class="py-16 bg-light-bg dark:bg-dark-bg">
-        <div class="container mx-auto px-4 md:px-6">
+    <!-- 项目模块完整区域（响应式优化：双栏改单栏，视频适配） -->
+    <section id="projects" class="py-12 sm:py-16 bg-light-bg dark:bg-dark-bg scroll-mt-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <!-- 模块标题 -->
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-light-text dark:text-dark-text mb-4">项目经验</h2>
-                <p class="text-light-lightText dark:text-dark-lightText max-w-2xl mx-auto">聚焦全栈开发与智能应用，通过技术创新解决实际场景问题，以下是核心项目成果展示</p>
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-light-text dark:text-dark-text mb-3 sm:mb-4">项目经验</h2>
+                <p class="text-light-lightText dark:text-dark-lightText max-w-2xl mx-auto text-sm sm:text-base">聚焦全栈开发与智能应用，通过技术创新解决实际场景问题，以下是核心项目成果展示</p>
             </div>
 
-            <!-- 项目网格布局（响应式） -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- 项目网格布局（响应式：移动端单栏，桌面端双栏） -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <!-- 项目1：智物 - 独居场景物品管理小程序 -->
                 <div class="bg-light-card dark:bg-dark-card rounded-xl shadow-card dark:shadow-dark-card card-animate hover:shadow-card-hover dark:hover:shadow-dark-card-hover hover:-translate-y-2 overflow-hidden transition-all duration-300 group">
                     <!-- 多端项目截图 -->
-                    <div class="h-65 bg-light-bg dark:bg-dark-bg p-4 flex items-center justify-center overflow-hidden relative">
+                    <div class="h-48 sm:h-65 bg-light-bg dark:bg-dark-bg p-3 sm:p-4 flex items-center justify-center overflow-hidden relative">
                         <img 
                             src="https://raw.githubusercontent.com/moodnzhang/zhangyuxin-fe/main/zw.jpg" 
                             alt="智物小程序多端截图" 
                             class="w-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
                         >
-                        <!-- 技术标签浮层 -->
-                        <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-sm rounded-full text-light-text dark:text-dark-text">微信小程序</span>
-                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-sm rounded-full text-light-text dark:text-dark-text">ChatGLM</span>
-                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-sm rounded-full text-light-text dark:text-dark-text">百度EasyDL</span>
+                        <!-- 技术标签浮层（响应式换行） -->
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-xs sm:text-sm rounded-full text-light-text dark:text-dark-text">微信小程序</span>
+                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-xs sm:text-sm rounded-full text-light-text dark:text-dark-text">ChatGLM</span>
+                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-xs sm:text-sm rounded-full text-light-text dark:text-dark-text">百度EasyDL</span>
                         </div>
                     </div>
 
-                    <div class="p-8 space-y-5">
+                    <div class="p-5 sm:p-8 space-y-4 sm:space-y-5">
                         <!-- 项目标题+时间 -->
                         <div class="flex flex-wrap justify-between items-start gap-3">
-                            <h3 class="text-xl font-bold text-primary">智物 - 独居场景物品管理小程序</h3>
-                            <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs rounded-full flex items-center gap-1">
+                            <h3 class="text-lg sm:text-xl font-bold text-primary">智物 - 独居场景物品管理小程序</h3>
+                            <span class="px-2 sm:px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs rounded-full flex items-center gap-1">
                                 <i class="fa fa-calendar-o"></i> 2024.02 - 2024.05
                             </span>
                         </div>
 
                         <!-- 项目描述 -->
-                        <p class="text-light-lightText dark:text-dark-lightText leading-relaxed">
+                        <p class="text-light-lightText dark:text-dark-lightText leading-relaxed text-sm sm:text-base">
                             协作开发的独居物品管理平台，集成物品生命周期管理、AI智能问答、社区互动等功能模块，采用前后端分离架构，结合MySQL存储数据，为独居人群提供高效的物品管理解决方案，优化生活效率。
                         </p>
 
-                        <!-- 技术栈标签 -->
+                        <!-- 技术栈标签（响应式换行） -->
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">微信小程序</span>
-                            <span class="px-3 py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">ChatGLM</span>
-                            <span class="px-3 py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">百度EasyDL</span>
-                            <span class="px-3 py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">MySQL</span>
+                            <span class="px-2 sm:px-3 py-1 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">微信小程序</span>
+                            <span class="px-2 sm:px-3 py-1 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">ChatGLM</span>
+                            <span class="px-2 sm:px-3 py-1 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">百度EasyDL</span>
+                            <span class="px-2 sm:px-3 py-1 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">MySQL</span>
                         </div>
 
                         <!-- 核心功能模块 -->
-                        <div class="mt-6">
-                            <h4 class="flex items-center gap-2 text-lg font-semibold text-light-text dark:text-dark-text">
+                        <div class="mt-4 sm:mt-6">
+                            <h4 class="flex items-center gap-2 text-base sm:text-lg font-semibold text-light-text dark:text-dark-text">
                                 <i class="fa fa-cogs text-green-500"></i>
                                 <span>核心功能模块</span>
                             </h4>
-                            <div class="grid grid-cols-2 gap-4 mt-4">
-                                <div class="flex flex-col items-center text-center p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
-                                    <i class="fa fa-sort-amount-asc text-blue-500 text-xl mb-2"></i>
-                                    <span class="text-sm text-light-text dark:text-dark-text">物品生命周期排序</span>
+                            <div class="grid grid-cols-2 gap-3 sm:gap-4 mt-3 sm:mt-4">
+                                <div class="flex flex-col items-center text-center p-2 sm:p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
+                                    <i class="fa fa-sort-amount-asc text-blue-500 text-lg sm:text-xl mb-2"></i>
+                                    <span class="text-xs sm:text-sm text-light-text dark:text-dark-text">物品生命周期排序</span>
                                 </div>
-                                <div class="flex flex-col items-center text-center p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
-                                    <i class="fa fa-comments-o text-purple-500 text-xl mb-2"></i>
-                                    <span class="text-sm text-light-text dark:text-dark-text">AI智能问答</span>
+                                <div class="flex flex-col items-center text-center p-2 sm:p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
+                                    <i class="fa fa-comments-o text-purple-500 text-lg sm:text-xl mb-2"></i>
+                                    <span class="text-xs sm:text-sm text-light-text dark:text-dark-text">AI智能问答</span>
                                 </div>
-                                <div class="flex flex-col items-center text-center p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
-                                    <i class="fa fa-camera text-cyan-500 text-xl mb-2"></i>
-                                    <span class="text-sm text-light-text dark:text-dark-text">物品图像录入</span>
+                                <div class="flex flex-col items-center text-center p-2 sm:p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
+                                    <i class="fa fa-camera text-cyan-500 text-lg sm:text-xl mb-2"></i>
+                                    <span class="text-xs sm:text-sm text-light-text dark:text-dark-text">物品图像录入</span>
                                 </div>
-                                <div class="flex flex-col items-center text-center p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
-                                    <i class="fa fa-users text-red-500 text-xl mb-2"></i>
-                                    <span class="text-sm text-light-text dark:text-dark-text">社区广场互动</span>
+                                <div class="flex flex-col items-center text-center p-2 sm:p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
+                                    <i class="fa fa-users text-red-500 text-lg sm:text-xl mb-2"></i>
+                                    <span class="text-xs sm:text-sm text-light-text dark:text-dark-text">社区广场互动</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- 技术亮点 -->
-                        <div class="mt-6">
-                            <h4 class="flex items-center gap-2 text-lg font-semibold text-light-text dark:text-dark-text">
+                        <div class="mt-4 sm:mt-6">
+                            <h4 class="flex items-center gap-2 text-base sm:text-lg font-semibold text-light-text dark:text-dark-text">
                                 <i class="fa fa-lightbulb-o text-amber-500"></i>
                                 <span>技术亮点</span>
                             </h4>
-                            <ul class="mt-3 space-y-2">
-                                <li class="flex items-center gap-2 text-sm text-light-text dark:text-dark-text">
+                            <ul class="mt-3 space-y-2 text-sm">
+                                <li class="flex items-center gap-2 text-light-text dark:text-dark-text">
                                     <i class="fa fa-check-circle text-green-500"></i>
                                     <span>集成ChatGLM对话模型，实现物品相关智能查询与咨询</span>
                                 </li>
-                                <li class="flex items-center gap-2 text-sm text-light-text dark:text-dark-text">
+                                <li class="flex items-center gap-2 text-light-text dark:text-dark-text">
                                     <i class="fa fa-check-circle text-green-500"></i>
                                     <span>百度EasyDL训练自定义模型，物品图像识别准确率达92%</span>
                                 </li>
-                                <li class="flex items中心 gap-2 text-sm text-light-text dark:text-dark-text">
+                                <li class="flex items-center gap-2 text-light-text dark:text-dark-text">
                                     <i class="fa fa-check-circle text-green-500"></i>
                                     <span>前后端分离架构，数据库与业务逻辑分层处理，便于维护</span>
                                 </li>
@@ -918,21 +953,21 @@
                         </div>
 
                         <!-- 项目成果 -->
-                        <div class="mt-6">
-                            <h4 class="flex items-center gap-2 text-lg font-semibold text-light-text dark:text-dark-text">
+                        <div class="mt-4 sm:mt-6">
+                            <h4 class="flex items-center gap-2 text-base sm:text-lg font-semibold text-light-text dark:text-dark-text">
                                 <i class="fa fa-trophy text-amber-500"></i>
                                 <span>项目成果</span>
                             </h4>
                             <div class="flex flex-wrap gap-2 mt-3">
-                                <span class="px-3 py-1 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 text-xs rounded-full flex items中心 gap-1">
+                                <span class="px-2 sm:px-3 py-1 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 text-xs rounded-full flex items-center gap-1">
                                     <i class="fa fa-trophy text-xs"></i>
                                     计算机设计大赛省三等奖
                                 </span>
-                                <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs rounded-full flex items中心 gap-1">
+                                <span class="px-2 sm:px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs rounded-full flex items-center gap-1">
                                     <i class="fa fa-trophy text-xs"></i>
                                     校级二等奖
                                 </span>
-                                <span class="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs rounded-full flex items中心 gap-1">
+                                <span class="px-2 sm:px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs rounded-full flex items-center gap-1">
                                     <i class="fa fa-arrow-up text-xs"></i>
                                     物品管理效率提升50%
                                 </span>
@@ -941,88 +976,88 @@
                     </div>
                 </div>
 
-                <!-- 项目2：宠爱家 - 宠物一站式服务微信小程序（已添加演示视频链接） -->
+                <!-- 项目2：宠爱家 - 宠物一站式服务微信小程序 -->
                 <div class="bg-light-card dark:bg-dark-card rounded-xl shadow-card dark:shadow-dark-card card-animate hover:shadow-card-hover dark:hover:shadow-dark-card-hover hover:-translate-y-2 overflow-hidden transition-all duration-300 group">
                     <!-- 多端项目截图 -->
-                    <div class="h-65 bg-light-bg dark:bg-dark-bg p-4 flex items-center justify-center overflow-hidden relative">
+                    <div class="h-48 sm:h-65 bg-light-bg dark:bg-dark-bg p-3 sm:p-4 flex items-center justify-center overflow-hidden relative">
                         <img 
                             src="https://raw.githubusercontent.com/moodnzhang/zhangyuxin-fe/main/caj.jpg" 
                             alt="宠爱家小程序多端截图" 
                             class="w-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
                         >
                         <!-- 技术标签浮层 -->
-                        <div class="absolute top-4 left-4 flex gap-2">
-                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-sm rounded-full text-light-text dark:text-dark-text">微信小程序</span>
-                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-sm rounded-full text-light-text dark:text-dark-text">云开发</span>
-                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-sm rounded-full text-light-text dark:text-dark-text">JavaScript</span>
+                        <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-xs sm:text-sm rounded-full text-light-text dark:text-dark-text">微信小程序</span>
+                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-xs sm:text-sm rounded-full text-light-text dark:text-dark-text">云开发</span>
+                            <span class="px-2 py-1 bg-white/80 dark:bg-dark-card/80 backdrop-blur-sm text-xs sm:text-sm rounded-full text-light-text dark:text-dark-text">JavaScript</span>
                         </div>
                     </div>
 
-                    <div class="p-8 space-y-5">
+                    <div class="p-5 sm:p-8 space-y-4 sm:space-y-5">
                         <!-- 项目标题+时间+奖项标签 -->
                         <div class="flex flex-wrap justify-between items-start gap-3">
-                            <h3 class="text-xl font-bold text-primary">宠爱家 - 宠物一站式服务微信小程序</h3>
-                            <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs rounded-full flex items中心 gap-1">
+                            <h3 class="text-lg sm:text-xl font-bold text-primary">宠爱家 - 宠物一站式服务微信小程序</h3>
+                            <span class="px-2 sm:px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs rounded-full flex items-center gap-1">
                                 <i class="fa fa-calendar-o"></i> 2025.02 - 2025.05
                             </span>
                         </div>
 
                         <!-- 项目描述 -->
-                        <p class="text-light-lightText dark:text-dark-lightText leading-relaxed">
+                        <p class="text-light-lightText dark:text-dark-lightText leading-relaxed text-sm sm:text-base">
                             协作开发的宠物综合服务平台，集成待办管理、商城购物、社区交流、健康管理等六大核心功能，采用微信云开发技术，为宠物爱好者提供一站式服务体验。
                         </p>
 
                         <!-- 技术栈标签 -->
                         <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">wxml/wxss</span>
-                            <span class="px-3 py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">JavaScript</span>
-                            <span class="px-3 py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">微信云开发</span>
-                            <span class="px-3 py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">云数据库</span>
-                            <span class="px-3 py-1.5 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">云函数</span>
+                            <span class="px-2 sm:px-3 py-1 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">wxml/wxss</span>
+                            <span class="px-2 sm:px-3 py-1 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">JavaScript</span>
+                            <span class="px-2 sm:px-3 py-1 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">微信云开发</span>
+                            <span class="px-2 sm:px-3 py-1 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">云数据库</span>
+                            <span class="px-2 sm:px-3 py-1 bg-primary/5 dark:bg-primary/10 text-primary text-xs rounded-full">云函数</span>
                         </div>
 
                         <!-- 核心功能模块 -->
-                        <div class="mt-6">
-                            <h4 class="flex items-center gap-2 text-lg font-semibold text-light-text dark:text-dark-text">
+                        <div class="mt-4 sm:mt-6">
+                            <h4 class="flex items-center gap-2 text-base sm:text-lg font-semibold text-light-text dark:text-dark-text">
                                 <i class="fa fa-cogs text-green-500"></i>
                                 <span>核心功能模块</span>
                             </h4>
-                            <div class="grid grid-cols-2 gap-4 mt-4">
-                                <div class="flex flex-col items-center text-center p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
-                                    <i class="fa fa-list-ul text-blue-500 text-xl mb-2"></i>
-                                    <span class="text-sm text-light-text dark:text-dark-text">今日待办</span>
+                            <div class="grid grid-cols-2 gap-3 sm:gap-4 mt-3 sm:mt-4">
+                                <div class="flex flex-col items-center text-center p-2 sm:p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
+                                    <i class="fa fa-list-ul text-blue-500 text-lg sm:text-xl mb-2"></i>
+                                    <span class="text-xs sm:text-sm text-light-text dark:text-dark-text">今日待办</span>
                                 </div>
-                                <div class="flex flex-col items-center text-center p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
-                                    <i class="fa fa-shopping-bag text-purple-500 text-xl mb-2"></i>
-                                    <span class="text-sm text-light-text dark:text-dark-text">宠物商场</span>
+                                <div class="flex flex-col items-center text-center p-2 sm:p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
+                                    <i class="fa fa-shopping-bag text-purple-500 text-lg sm:text-xl mb-2"></i>
+                                    <span class="text-xs sm:text-sm text-light-text dark:text-dark-text">宠物商场</span>
                                 </div>
-                                <div class="flex flex-col items中心 text-center p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
-                                    <i class="fa fa-comments text-cyan-500 text-xl mb-2"></i>
-                                    <span class="text-sm text-light-text dark:text-dark-text">社区交流</span>
+                                <div class="flex flex-col items-center text-center p-2 sm:p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
+                                    <i class="fa fa-comments text-cyan-500 text-lg sm:text-xl mb-2"></i>
+                                    <span class="text-xs sm:text-sm text-light-text dark:text-dark-text">社区交流</span>
                                 </div>
-                                <div class="flex flex-col items-center text-center p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
-                                    <i class="fa fa-heartbeat text-red-500 text-xl mb-2"></i>
-                                    <span class="text-sm text-light-text dark:text-dark-text">健康管理</span>
+                                <div class="flex flex-col items-center text-center p-2 sm:p-3 bg-light-card/50 dark:bg-dark-card/50 rounded-lg transition-transform hover:scale-105">
+                                    <i class="fa fa-heartbeat text-red-500 text-lg sm:text-xl mb-2"></i>
+                                    <span class="text-xs sm:text-sm text-light-text dark:text-dark-text">健康管理</span>
                                 </div>
                             </div>
                         </div>
 
                         <!-- 技术亮点 -->
-                        <div class="mt-6">
-                            <h4 class="flex items-center gap-2 text-lg font-semibold text-light-text dark:text-dark-text">
+                        <div class="mt-4 sm:mt-6">
+                            <h4 class="flex items-center gap-2 text-base sm:text-lg font-semibold text-light-text dark:text-dark-text">
                                 <i class="fa fa-lightbulb-o text-amber-500"></i>
                                 <span>技术亮点</span>
                             </h4>
-                            <ul class="mt-3 space-y-2">
-                                <li class="flex items中心 gap-2 text-sm text-light-text dark:text-dark-text">
+                            <ul class="mt-3 space-y-2 text-sm">
+                                <li class="flex items-center gap-2 text-light-text dark:text-dark-text">
                                     <i class="fa fa-check-circle text-green-500"></i>
                                     <span>深度应用微信云开发，云数据库+云函数架构，无需自建服务器</span>
                                 </li>
-                                <li class="flex items中心 gap-2 text-sm text-light-text dark:text-dark-text">
+                                <li class="flex items-center gap-2 text-light-text dark:text-dark-text">
                                     <i class="fa fa-check-circle text-green-500"></i>
                                     <span>Flex布局实现多机型适配，显示一致性达98%，用户体验流畅</span>
                                 </li>
-                                <li class="flex items中心 gap-2 text-sm text-light-text dark:text-dark-text">
+                                <li class="flex items-center gap-2 text-light-text dark:text-dark-text">
                                     <i class="fa fa-check-circle text-green-500"></i>
                                     <span>组件化开发模式，代码复用率提升40%，团队协作效率翻倍</span>
                                 </li>
@@ -1030,106 +1065,105 @@
                         </div>
 
                         <!-- 项目成果 -->
-                        <div class="mt-6">
-                            <h4 class="flex items-center gap-2 text-lg font-semibold text-light-text dark:text-dark-text">
+                        <div class="mt-4 sm:mt-6">
+                            <h4 class="flex items-center gap-2 text-base sm:text-lg font-semibold text-light-text dark:text-dark-text">
                                 <i class="fa fa-trophy text-amber-500"></i>
                                 <span>项目成果</span>
                             </h4>
                             <div class="flex flex-wrap gap-2 mt-3">
-                                <span class="px-3 py-1 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 text-xs rounded-full flex items中心 gap-1">
+                                <span class="px-2 sm:px-3 py-1 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 text-xs rounded-full flex items-center gap-1">
                                     <i class="fa fa-trophy text-xs"></i>
                                     移动创新赛西南赛区三等奖
                                 </span>
-                                <span class="px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs rounded-full flex items中心 gap-1">
+                                <span class="px-2 sm:px-3 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs rounded-full flex items-center gap-1">
                                     <i class="fa fa-trophy text-xs"></i>
                                     计算机设计大赛省三等奖
                                 </span>
-                                <span class="px-3 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-xs rounded-full flex items中心 gap-1">
+                                <span class="px-2 sm:px-3 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-xs rounded-full flex items-center gap-1">
                                     <i class="fa fa-trophy text-xs"></i>
                                     校一等奖
                                 </span>
-                                <span class="px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs rounded-full flex items中心 gap-1">
+                                <span class="px-2 sm:px-3 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-xs rounded-full flex items-center gap-1">
                                     <i class="fa fa-arrow-up text-xs"></i>
                                     后端API性能提升40%
                                 </span>
                             </div>
                         </div>
 
-                        <!-- 演示按钮（已添加实际视频链接） -->
-                        <div class="mt-6">
+                        <!-- 演示按钮（视频响应式优化） -->
+                        <div class="mt-4 sm:mt-6">
                             <!-- 视频播放标题 -->
-                            <p class="mb-2 text-sm text-light-lightText dark:text-dark-lightText">演示视频（点击播放，无需下载）</p>
-                            <!-- HTML5 video 标签：实现在线播放 -->
+                            <p class="mb-2 text-xs sm:text-sm text-light-lightText dark:text-dark-lightText">演示视频（点击播放，无需下载）</p>
+                            <!-- HTML5 video 标签：响应式尺寸，适配移动端 -->
                             <video 
                                 controls 
-                                class="w-full rounded-lg shadow-card dark:shadow-dark-card"
-                                poster="https://raw.githubusercontent.com/moodnzhang/zhangyuxin-fe/main/caj.jpg" <!-- 可选：视频封面图，用项目截图即可 -->
-                                preload="metadata" <!-- 仅预加载视频元数据，不自动下载完整视频 -->
+                                class="w-full h-auto max-h-60 sm:max-h-80 rounded-lg shadow-card dark:shadow-dark-card"
+                                poster="https://raw.githubusercontent.com/moodnzhang/zhangyuxin-fe/main/caj.jpg"
+                                preload="metadata"
                             >
                                 <source 
                                     src="https://mr-houjie.github.io/static/images/%E5%AE%A0%E7%88%B1%E5%AE%B6%E7%AD%94%E8%BE%A9%E8%A7%86%E9%A2%91.mp4" 
                                     type="video/mp4" 
-                                    
                                 >
+                                您的浏览器不支持视频播放，请升级浏览器后重试。
                             </video>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- 联系区（新增电话联系功能） -->
-    <section id="contact" class="py-20 bg-light-card dark:bg-dark-card transition-colors duration-300 scroll-mt-20">
+    <!-- 联系区（响应式优化：按钮竖向排列，间距调整） -->
+    <section id="contact" class="py-16 sm:py-20 bg-light-card dark:bg-dark-card transition-colors duration-300 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-[clamp(1.8rem,4vw,2.5rem)] font-bold">联系<span class="text-gradient">我</span></h2>
-                <p class="text-light-lightText dark:text-dark-lightText max-w-2xl mx-auto pt-4">期待与你交流，共创价值</p>
+            <div class="text-center mb-12 sm:mb-16">
+                <h2 class="text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold">联系<span class="text-gradient">我</span></h2>
+                <p class="text-light-lightText dark:text-dark-lightText max-w-2xl mx-auto pt-3 sm:pt-4 text-sm sm:text-base">期待与你交流，共创价值</p>
             </div>
-            <div class="max-w-md mx-auto bg-light-bg dark:bg-dark-bg rounded-xl p-8 shadow-card dark:shadow-dark-card transition-colors duration-300">
-                <div class="space-y-6">
-                    <!-- 新增：电话联系 -->
+            <div class="max-w-md mx-auto bg-light-bg dark:bg-dark-bg rounded-xl p-6 sm:p-8 shadow-card dark:shadow-dark-card transition-colors duration-300">
+                <div class="space-y-5 sm:space-y-6">
+                    <!-- 电话联系 -->
                     <div class="flex items-center space-x-4">
-                        <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary flex-shrink-0">
-                            <i class="fa fa-phone text-xl"></i>
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                            <i class="fa fa-phone text-lg sm:text-xl"></i>
                         </div>
                         <div>
-                            <div class="text-light-lightText dark:text-dark-lightText text-sm">电话</div>
-                            <a href="tel:18080435396" class="text-light-text dark:text-dark-text font-medium hover:text-primary transition-colors">
+                            <div class="text-light-lightText dark:text-dark-lightText text-xs sm:text-sm">电话</div>
+                            <a href="tel:18080435396" class="text-light-text dark:text-dark-text font-medium hover:text-primary transition-colors text-sm sm:text-base">
                                 18080435396
                             </a>
                         </div>
                     </div>
-                    <!-- 原有：邮箱 -->
-                    <div class="flex items中心 space-x-4">
-                        <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items中心 justify-center text-primary flex-shrink-0">
-                            <i class="fa fa-envelope text-xl"></i>
+                    <!-- 邮箱 -->
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                            <i class="fa fa-envelope text-lg sm:text-xl"></i>
                         </div>
                         <div>
-                            <div class="text-light-lightText dark:text-dark-lightText text-sm">邮箱</div>
-                            <a href="mailto:2926076094@qq.com" class="text-light-text dark:text-dark-text font-medium hover:text-primary transition-colors">
+                            <div class="text-light-lightText dark:text-dark-lightText text-xs sm:text-sm">邮箱</div>
+                            <a href="mailto:2926076094@qq.com" class="text-light-text dark:text-dark-text font-medium hover:text-primary transition-colors text-sm sm:text-base">
                                 2926076094@qq.com
                             </a>
                         </div>
                     </div>
-                    <!-- 原有：所在地 -->
-                    <div class="flex items中心 space-x-4">
-                        <div class="w-12 h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items中心 justify-center text-primary flex-shrink-0">
-                            <i class="fa fa-map-marker text-xl"></i>
+                    <!-- 所在地 -->
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                            <i class="fa fa-map-marker text-lg sm:text-xl"></i>
                         </div>
                         <div>
-                            <div class="text-light-lightText dark:text-dark-lightText text-sm">所在地</div>
-                            <div class="text-light-text dark:text-dark-text font-medium">四川 · 成都</div>
+                            <div class="text-light-lightText dark:text-dark-lightText text-xs sm:text-sm">所在地</div>
+                            <div class="text-light-text dark:text-dark-text font-medium text-sm sm:text-base">四川 · 成都</div>
                         </div>
                     </div>
                 </div>
-                <!-- 联系按钮（保留原有） -->
-                <div class="pt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <a href="tel:18080435396" class="block w-full bg-primary/10 dark:bg-primary/20 text-primary text-center px-6 py-3 rounded-lg hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors">
+                <!-- 联系按钮（移动端竖向排列） -->
+                <div class="pt-6 sm:pt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <a href="tel:18080435396" class="block w-full bg-primary/10 dark:bg-primary/20 text-primary text-center px-6 py-3 rounded-lg hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors text-sm sm:text-base">
                         拨打电话 <i class="fa fa-phone-square ml-2"></i>
                     </a>
-                    <a href="mailto:2926076094@qq.com" class="block w-full bg-primary text-white text-center px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors shadow-lg">
+                    <a href="mailto:2926076094@qq.com" class="block w-full bg-primary text-white text-center px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors shadow-lg text-sm sm:text-base">
                         发送邮件 <i class="fa fa-paper-plane ml-2"></i>
                     </a>
                 </div>
@@ -1137,24 +1171,23 @@
         </div>
     </section>
 
-    <!-- 页脚 -->
-    <footer class="py-8 bg-light-text/5 dark:bg-dark-text/5 border-t border-light-border dark:border-dark-border transition-colors duration-300">
+    <!-- 页脚（响应式优化：文字尺寸调整） -->
+    <footer class="py-6 sm:py-8 bg-light-text/5 dark:bg-dark-text/5 border-t border-light-border dark:border-dark-border transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-light-lightText dark:text-dark-lightText">© 2026 章雨馨 - 前端开发工程师 | 用心做好每一个产品</p>
+            <p class="text-light-lightText dark:text-dark-lightText text-xs sm:text-sm">© 2026 章雨馨 - 前端开发工程师 | 用心做好每一个产品</p>
             <div class="flex justify-center space-x-6 pt-4">
-                <a href="https://github.com/moodnzhang" class="text-light-lightText dark:text-dark-lightText hover:text-primary transition-colors">
-                    <i class="fa fa-github text-lg"></i>
+                <a href="https://github.com/moodnzhang" class="text-light-lightText dark:text-dark-lightText hover:text-primary transition-colors text-lg">
+                    <i class="fa fa-github"></i>
                 </a>
-                <a href="mailto:2926076094@qq.com" class="text-light-lightText dark:text-dark-lightText hover:text-primary transition-colors">
-                    <i class="fa fa-envelope text-lg"></i>
+                <a href="mailto:2926076094@qq.com" class="text-light-lightText dark:text-dark-lightText hover:text-primary transition-colors text-lg">
+                    <i class="fa fa-envelope"></i>
                 </a>
             </div>
         </div>
     </footer>
 
-    <!-- 核心脚本 -->
+    <!-- 核心脚本（新增移动端菜单逻辑） -->
     <script>
-
         // 2. 主题切换逻辑（修复后）
         const themeToggle = document.getElementById('themeToggle');
         const toggleDot = document.getElementById('toggleDot');
@@ -1282,24 +1315,57 @@
             });
         };
 
-        // 6. 页面加载初始化（修复后：移除冗余调用，确保导航初始状态正确）
+        // 6. 移动端菜单逻辑
+        const initMobileMenu = () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileNavLinks = mobileMenu.querySelectorAll('.nav-link');
+
+            // 菜单展开/收起切换
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+                // 切换菜单图标
+                const icon = mobileMenuBtn.querySelector('i');
+                if (mobileMenu.classList.contains('open')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // 点击移动端导航链接后关闭菜单
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        };
+
+        // 7. 页面加载初始化（修复后：移除冗余调用，确保导航初始状态正确）
         document.addEventListener('DOMContentLoaded', () => {
             initTheme();
+            initMobileMenu(); // 初始化移动端菜单
             // 页面加载完成后立即执行导航状态更新，强制选中首页
             updateActiveNavLink();
             // 滚动时节流更新导航状态
             window.addEventListener('scroll', throttle(updateActiveNavLink));
             initSkillNodeInteraction();
 
-            // 平滑滚动（保持原有逻辑不变）
+            // 平滑滚动（保持原有逻辑不变，适配移动端偏移）
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
+                        const offsetTop = window.innerWidth < 768 ? 70 : 80; // 移动端更小的偏移量
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetElement.offsetTop - offsetTop,
                             behavior: 'smooth'
                         });
                     }
