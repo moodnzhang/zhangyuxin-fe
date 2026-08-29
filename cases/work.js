@@ -66,6 +66,7 @@
 
   bindGroup('[data-track-tabs]', 'button[data-copy]', '[data-track-output]', 'copy');
   bindGroup('[data-eval-steps]', 'button[data-copy]', '[data-eval-output]', 'copy');
+  bindGroup('[data-safety-controls]', 'button[data-copy]', '[data-safety-output]', 'copy');
   bindGroup('[data-state-controls]', 'button[data-copy]', '[data-impact-output]', 'copy', button => {
     const hits = (button.dataset.hits || '').split(',');
     $$('[data-impact]').forEach(item => item.classList.toggle('is-hit', hits.includes(item.dataset.impact)));
