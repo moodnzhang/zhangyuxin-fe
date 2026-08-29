@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Cielo 个人智能体产品案例：长期记忆、主动触发、多 Agent 协作与用户边界。">
+  <meta name="theme-color" content="#090b0d">
+  <title>Cielo｜章雨馨 AI 产品案例</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23090b0d'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%23a8b5bf' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23a8b5bf'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="cielo.css">
+  <script src="cielo.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#content">跳到案例正文</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="page-progress" aria-hidden="true"><i data-progress></i></div>
+
+  <header class="case-nav" data-nav>
+    <a class="back" href="../index.html#work"><span>返回作品集</span><b>章雨馨</b></a>
+    <p>CIELO / CASE 01</p>
+    <a class="resume" href="../assets/zhangyuxin-ai-product-manager.pdf" download>下载简历</a>
+  </header>
+
+  <main id="content">
+    <section class="case-hero" data-hero>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-orbit" aria-hidden="true"><i></i><i></i><i></i><b>C</b></div>
+      <div class="hero-inner shell">
+        <div class="hero-meta enter"><span>PERSONAL AI AGENT / CONTINUOUSLY USED</span><span>CASE / 01</span><span>2026</span></div>
+        <div class="hero-main">
+          <p class="case-name enter">Cielo</p>
+          <h1 class="enter">让 AI 从一次对话，<br>走进持续发生的生活。</h1>
+          <div class="hero-summary enter">
+            <p>Cielo 是一个在真实生活中持续使用的个人智能体。它不只回应当下的问题，也尝试跨越时间延续对用户的理解，在合适的时刻主动出现，并通过多个 Agent 共同完成更复杂的陪伴与行动。</p>
+            <p>从长期使用中不断发现遗忘、错误召回、主动打扰和角色失控等问题，再将它们转化为可控制、可验证、可持续迭代的产品机制。</p>
+          </div>
+          <div class="hero-actions enter"><a href="#story">浏览案例</a><a href="#evidence">查看材料</a></div>
+        </div>
+        <div class="hero-bottom enter">
+          <div><small>ROLE</small><strong>独立产品负责人</strong><span>产品定位 · 机制设计 · 交互设计 · 效果验收与持续迭代</span></div>
+          <div><small>STATE</small><strong>真实运行与长期使用</strong><span>Mobile App · Deployed Service · APK / OTA</span></div>
+          <div><small>FOCUS</small><strong>连续性 · 主动性 · 协作 · 信任</strong><span>Memory · Initiative · Orchestration · Trust</span></div>
+        </div>
+        <a class="scroll" href="#overview"><span>向下浏览 / 00:01</span><i></i></a>
+      </div>
+    </section>
+
+    <section class="overview shell" id="overview">
+        <div class="section-label reveal"><span>00 / CONTEXT</span><span>PRODUCT DEFINITION</span></div>
+        <div class="overview-title reveal">
+          <span class="overview-eyebrow">用户需求 / PRODUCT NEED</span>
+          <p>Cielo 从一个长期需求出发：让 AI 在时间中延续对一个人的理解，记住重要经历、偏好与未完成事项，理解主动出现的时机，并在持续相处中始终尊重用户边界。</p>
+        </div>
+      <div class="overview-grid reveal">
+        <article><span>WHY</span><h2>真正困难的，是让体验在一次次对话之间继续发生。</h2><p>在长期使用中，我逐渐发现：比“回答得好不好”更影响体验的，是它会不会忘记重要的信息、错误理解过去的内容、在不合适的时候主动出现，或者让多个角色的参与变得混乱。这些真实发生的问题，也成为 Cielo 持续迭代的起点。</p></article>
+        <article><span>MY ROLE</span><h2>把每一次“不好用”，拆成可以被设计和验证的问题。</h2><p>负责 Cielo 的产品定位、需求分析、信息架构、交互设计与 AI 机制方案。从一个体验问题出发，继续明确它的触发条件、产品状态、异常路径和验收标准，再通过实际使用判断方案是否真正有效。</p></article>
+        <article><span>VALIDATION</span><h2>Cielo 的每一次迭代，都来自真实使用。</h2><p>将 Cielo 部署到自己的手机上，让它进入日常对话、记录与陪伴场景。使用过程中遇到的遗忘、误召回、主动打扰和协作混乱，会被记录成具体问题；完成调整后，再回到相同场景中验证，并继续观察是否产生新的影响。</p></article>
+      </div>
+    </section>
+
+    <section class="questions" id="story">
+      <div class="shell">
+        <div class="section-label reveal"><span>01 / PRODUCT QUESTIONS</span><span>FROM CAPABILITY TO EXPERIENCE</span></div>
+        <div class="questions-head reveal"><h2>从四个问题出发，<br>逐步搭起 Cielo 的产品骨架。</h2><p data-question-copy>一次对话结束后，关系如何继续？</p></div>
+        <div class="question-strip reveal" data-question-strip>
+          <button class="is-active" type="button" data-question="一次对话结束后，关系如何继续？" data-target="continuity" aria-controls="continuity"><span>01</span><b>连续性</b><small>记忆 · 上下文 · 召回</small></button>
+          <button type="button" data-question="AI 什么时候应该主动，什么时候应该保持沉默？" data-target="initiative" aria-controls="initiative"><span>02</span><b>主动性</b><small>触发 · 判断 · 打扰控制</small></button>
+          <button type="button" data-question="多个 Agent 如何协作，而不是同时制造噪声？" data-target="orchestration" aria-controls="orchestration"><span>03</span><b>多 Agent 协作</b><small>角色 · 接力 · 协作调度</small></button>
+          <button type="button" data-question="当 AI 更了解用户，如何确保它不越界？" data-target="trust" aria-controls="trust"><span>04</span><b>用户边界</b><small>透明 · 权限 · 用户控制</small></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="mechanisms" aria-label="Cielo 产品机制">
+      <aside class="scene-index" aria-label="场景导航">
+        <span>SCENES</span>
+        <a class="is-active" href="#continuity" data-scene-link="continuity">01</a>
+        <a href="#initiative" data-scene-link="initiative">02</a>
+        <a href="#orchestration" data-scene-link="orchestration">03</a>
+        <a href="#trust" data-scene-link="trust">04</a>
+      </aside>
+
+      <article class="mechanism scene-continuity" id="continuity" data-scene="continuity">
+        <div class="scene-copy reveal"><p>SCENE 01 / CONTINUITY</p><h2>让记忆延续关系，<br>而不是污染回答。</h2><p>最初，Cielo 的记忆目标只是“不再忘记”。进入真实使用后，问题很快从“能不能记住”变成了“应该记住什么、何时召回，以及召回错了怎么办”。记得越多并不一定越好，无关信息会增加上下文成本，错误记忆甚至比没有记忆更容易破坏体验。</p><p>因此，记忆不再被设计成一个持续堆积的信息仓库，而是围绕写入、分层、召回和用户控制形成完整闭环。</p><ul><li><b>分层与冷却</b>：区分核心、长期、短期、摘要与日记信息，并降低长期未使用内容的召回权重</li><li><b>滚动摘要</b>：压缩较长的会话历史，在保留关键上下文的同时控制 Token 成本</li><li><b>召回降噪</b>：结合语义检索、关键词检索、Rerank 与阈值筛选，减少低相关内容进入回答</li><li><b>用户策展</b>：用户可以确认、编辑、冻结或删除记忆，让系统记住什么不再完全由模型决定</li></ul></div>
+        <div class="memory-machine reveal" data-memory-machine>
+          <div class="machine-rail" aria-hidden="true"><i></i></div>
+          <button type="button" data-node-copy="从当前会话提取可能影响未来互动的信息。"><span>01</span><b>会话内容</b><small>原始上下文</small></button>
+          <button type="button" data-node-copy="滚动摘要压缩历史信息，控制上下文和 Token 成本。"><span>02</span><b>滚动摘要</b><small>摘要压缩</small></button>
+          <button class="is-active" type="button" data-node-copy="语义检索与关键词检索互补，再根据相关性重新排序。"><span>03</span><b>混合召回</b><small>语义 + 关键词</small></button>
+          <button type="button" data-node-copy="过滤低相关信息，避免“记得太多”反而干扰回答。"><span>04</span><b>阈值筛选</b><small>召回降噪</small></button>
+          <button type="button" data-node-copy="记忆写入前后保留用户确认、编辑、冻结和删除能力。"><span>05</span><b>用户策展</b><small>用户控制</small></button>
+          <p data-memory-copy>语义检索与关键词检索互补，再根据相关性重新排序。</p>
+        </div>
+      </article>
+
+      <article class="mechanism scene-initiative" id="initiative" data-scene="initiative">
+        <div class="scene-copy reveal"><p>SCENE 02 / INITIATIVE</p><h2>主动不是多说，<br>而是在合适时刻出现。</h2><p>Cielo 开始主动出现后，新的问题也随之发生：满足触发条件，并不代表此刻适合发送；内容与用户有关，也不代表它值得打断当前状态。主动性真正需要解决的，不是“如何让 AI 主动”，而是“如何判断这一次主动是否必要”。</p><p>因此，主动行为被拆分为触发、判断、生成与触达四个阶段。系统先发现值得关注的变化，再结合相关性、时间、频率和近期互动判断是否继续，最后决定内容进入对话、收件箱，还是保持沉默。</p><ul><li><b>条件触发</b>：从时间、日记、记忆变化与使用状态中识别可能需要回应的信号</li><li><b>相关性判断</b>：触发只代表“可以关注”，达到相关性门槛后才进入生成</li><li><b>频率控制</b>：通过冷却、去重与优先级，避免相似内容连续出现</li><li><b>用户打断</b>：主动内容可以被忽略、关闭或调整，让用户始终保有最终决定权</li></ul></div>
+        <div class="initiative-stage reveal">
+          <div class="trigger-orbit" aria-hidden="true"><i class="t1">TIME</i><i class="t2">DIARY</i><i class="t3">MEMORY</i><i class="t4">STATUS</i><b>TRIGGER</b></div>
+          <div class="decision-gate"><small>DECISION GATE</small><strong>现在值得打扰用户吗？</strong><div><span>相关性</span><i style="--score:82%"></i><em>82</em></div><div><span>新鲜度</span><i style="--score:68%"></i><em>68</em></div><div><span>冷却状态</span><i style="--score:91%"></i><em>91</em></div><p><b>PASS</b> → 进入收件箱 / 通知</p></div>
+        </div>
+      </article>
+
+      <article class="mechanism scene-orchestration" id="orchestration" data-scene="orchestration">
+        <div class="scene-copy reveal"><p>SCENE 03 / ORCHESTRATION</p><h2>让多个 Agent 协作，<br>而不是轮流抢话。</h2><p>当多个 Agent 同时进入一段对话，角色数量并不会自然带来更好的协作。实际使用中，更容易出现的是重复回答、话题争夺、角色边界模糊，以及不相关内容被写入共同记忆。</p><p>因此，Cielo 没有让所有 Agent 同时响应，而是先判断当前内容与谁更相关，再由合适的角色接手；只有在需要补充视角或明确邀请时，其他 Agent 才会加入。</p><ul><li><b>角色边界</b>：为不同 Agent 明确身份、关注范围与可以采取的行动，避免角色能力彼此重叠</li><li><b>导演式调度</b>：由统一的调度逻辑判断当前应由谁回应，而不是让多个 Agent 同时生成内容</li><li><b>显式接力</b>：通过 @ 邀请与角色转交，让协作关系对用户可见，也允许用户直接指定回应者</li><li><b>轮次与记忆控制</b>：限制连续发言与自动接力，并确认哪些内容可以进入长期记忆</li></ul></div>
+        <div class="agent-stage reveal" data-agent-stage>
+          <div class="director"><small>DIRECTOR</small><b>任务与发言调度</b><span>TURN 02 / 06</span></div>
+          <button class="agent a1 is-active" type="button" data-agent-copy="陪伴 Persona 保持语气连续，当前负责回应用户感受。"><i>C</i><b>陪伴 Persona</b><span>当前回应</span></button>
+          <button class="agent a2" type="button" data-agent-copy="行动教练在明确接力后提供可执行建议，不主动覆盖当前对话。"><i>A</i><b>行动教练</b><span>等待接力</span></button>
+          <button class="agent a3" type="button" data-agent-copy="记录 Agent 只在获得确认后写入长期记忆。"><i>M</i><b>记录 Agent</b><span>等待确认</span></button>
+          <div class="agent-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+          <p data-agent-copy-output>陪伴 Persona 保持语气连续，当前负责回应用户感受。</p>
+        </div>
+      </article>
+
+      <article class="mechanism scene-trust" id="trust" data-scene="trust">
+        <div class="scene-copy reveal"><p>SCENE 04 / TRUST</p><h2>越了解用户，<br>越需要清晰的边界。</h2><p>记忆与主动能力越深入，AI 对用户生活的参与也越多。它可能引用不该出现在当前对话里的内容，把角色设定与现实信息混在一起，或在没有明确确认时调用工具。问题不只在于回答是否准确，更在于用户是否知道它为什么这样做，以及能否随时阻止。</p><p>因此，Cielo 将边界设计为产品中的可见状态：信息从哪里来、哪些角色可以使用、什么操作需要确认，以及用户如何撤回，都应当能够被理解和控制。</p><ul><li><b>来源可追溯</b>：区分当前对话、历史记忆、日记与角色设定，避免不同来源的信息被混合使用</li><li><b>场景隔离</b>：分离现实信息与角色扮演内容，防止虚构关系进入真实判断</li><li><b>权限确认</b>：涉及工具调用、数据写入或主动行为时，根据风险设置确认与限制</li><li><b>随时撤回</b>：允许用户打断生成、关闭主动行为、编辑或删除记忆</li></ul></div>
+        <div class="trust-stage reveal" data-trust-stage>
+          <div class="trust-rings" aria-hidden="true"><i></i><i></i><i></i><b>USER</b></div>
+          <button class="is-active" type="button" data-trust-copy="用户可以确认、编辑、冻结或删除长期记忆。"><span>记忆</span><b>记忆控制</b></button>
+          <button type="button" data-trust-copy="现实记忆与角色扮演内容使用独立边界。"><span>场景</span><b>场景隔离</b></button>
+          <button type="button" data-trust-copy="工具调用和模型来源在交互中保持可见。"><span>工具</span><b>来源透明</b></button>
+          <button type="button" data-trust-copy="用户可以忽略、打断或恢复 Agent 行为。"><span>主动权</span><b>随时打断</b></button>
+          <p data-trust-output>用户可以确认、编辑、冻结或删除长期记忆。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="build-story shell">
+      <div class="section-label reveal"><span>02 / BUILD STORY</span><span>FROM IDEA TO DAILY USE</span></div>
+      <div class="build-head reveal"><h2>从一个问题，<br>走到持续运行的产品。</h2><p>Cielo 并不是一次生成完成的。每个功能都从真实使用中出现的问题开始，经过需求拆解、机制选择、交互设计与设备验收，再进入下一轮使用。重点不是完成更多功能，而是把模糊的体验问题表达成足够清晰的产品规则，让 AI 编程工具能够执行，也让最终结果可以被检查和修正。</p></div>
+      <ol class="build-track reveal">
+        <li><span>01</span><b>产品定义</b><small>陪伴、连续与边界</small></li>
+        <li><span>02</span><b>信息架构</b><small>会话、日记、群聊、记忆、Agent</small></li>
+        <li><span>03</span><b>交互与机制</b><small>状态、权限、异常路径</small></li>
+        <li><span>04</span><b>AI 辅助构建</b><small>需求表达与 AI 协作</small></li>
+        <li><span>05</span><b>部署与更新</b><small>Service · APK · OTA</small></li>
+        <li><span>06</span><b>长期使用</b><small>Bad Case · 验收 · 迭代</small></li>
+      </ol>
+      <div class="role-boundary reveal">
+        <article><span>01 / PRODUCT DEFINITION</span><h3>把体验问题变成产品定义</h3><p>遗忘、误召回、过度主动或角色混乱，最初都只是使用中的模糊感受。它们会被进一步拆成具体场景、触发条件、页面状态、异常路径与验收标准，再决定应该通过交互、规则还是 AI 机制解决。</p><small>场景拆解 · 产品边界 · 状态设计 · 验收标准</small></article>
+        <article><span>02 / AI-ASSISTED BUILD</span><h3>与 AI 完成产品构建</h3><p>项目采用 Vibe Coding 方式构建，代码主要由 AI 编程工具生成。产品需求会被表达为明确的流程、状态、数据关系与约束条件；生成结果则通过界面检查、功能测试和实际体验继续修正。</p><small>需求表达 · AI 协作 · 结果审查 · 方案修正</small></article>
+        <article><span>03 / VALIDATION LOOP</span><h3>让产品进入真实使用</h3><p>功能完成后，Cielo 会被部署到手机并进入日常使用。对话、记忆、主动行为和 Agent 协作中出现的问题，会被记录为新的需求或 Bad Case，再回到下一轮设计与验收。</p><small>真机使用 · Bad Case · 版本记录 · 迭代验证</small></article>
+      </div>
+    </section>
+
+    <section class="evidence" id="evidence">
+      <div class="shell">
+        <div class="section-label reveal"><span>03 / PRODUCT IN USE</span><span>REAL INTERFACES</span></div>
+        <div class="evidence-head reveal"><h2>从机制设想，<br>到每天真正使用的产品。</h2><p>这些界面记录了 Cielo 从产品结构、记忆控制到主动行为逐渐成形的过程。它们不只呈现最终结果，也对应着长期使用中反复调整的产品判断。</p></div>
+        <div class="evidence-grid reveal">
+          <article class="evidence-card evidence-cover is-wide">
+            <div class="shot-stage"><img src="../assets/cielo/home.webp" alt="Cielo 深色首页，使用星图连接日记、圆桌、记忆、Agent 等功能" loading="lazy"></div>
+            <div class="evidence-caption"><span>01 / DAILY ENTRY</span><h3>日常使用入口</h3><p>将对话、关系状态与核心功能收拢在同一入口，让 Cielo 更接近一个持续存在的个人智能体，而不是分散的工具集合。</p></div>
+          </article>
+          <article class="evidence-card">
+            <div class="shot-stage"><img src="../assets/cielo/memory-overview.webp" alt="Cielo 分层记忆总览，包含核心记忆、长期记忆、短期记忆、摘要和日记" loading="lazy"></div>
+            <div class="evidence-caption"><span>02 / LAYERED MEMORY</span><h3>分层记忆结构</h3><p>通过短期、长期等记忆层级组织不同价值与时效的信息，帮助用户理解系统保存了什么。</p></div>
+          </article>
+          <article class="evidence-card">
+            <div class="shot-stage"><img src="../assets/cielo/memory-control.webp" alt="使用作品集测试数据的记忆列表，提供固定、编辑、复制和删除操作" loading="lazy"></div>
+            <div class="evidence-caption"><span>03 / USER CONTROL</span><h3>记忆由用户管理</h3><p>用户可以查看和处理已保存的信息，让记忆从后台机制变成可见、可修改的产品对象。</p></div>
+          </article>
+          <article class="evidence-card">
+            <div class="shot-stage"><img src="../assets/cielo/initiative.webp" alt="Cielo 小代理主动触发页面，展示定时与事件触发及开关" loading="lazy"></div>
+            <div class="evidence-caption"><span>04 / INITIATIVE</span><h3>主动行为管理</h3><p>将定时、事件与随机触发集中呈现，同时提供启停和试运行操作，让主动行为保持可预期。</p></div>
+          </article>
+          <article class="evidence-card">
+            <div class="shot-stage"><img src="../assets/cielo/orchestration.webp" alt="Cielo 圆桌页面，展示多个 Agent 共同参与的房间" loading="lazy"></div>
+            <div class="evidence-caption"><span>05 / ORCHESTRATION</span><h3>Agent 协作关系</h3><p>不同角色通过明确的触发与接力方式参与对话，使多 Agent 协作能够被用户理解和干预。</p></div>
+          </article>
+          <article class="evidence-card settings-evidence">
+            <div class="shot-stage"><img src="../assets/cielo/settings-controls.webp" alt="Cielo 设置页局部，包含系统状态、访问、模型、外观和会话摘要" loading="lazy"></div>
+            <div class="evidence-caption"><span>06 / EXPERIENCE CONTROL</span><h3>模型与体验控制</h3><p>将模型、访问方式、外观与会话设置交还给用户，在能力与使用成本之间保留调整空间。</p></div>
+          </article>
+          <article class="evidence-card video-card" id="demo">
+            <button class="shot-stage video-launch" type="button" data-open-video aria-label="播放 Cielo 完整产品演示，时长 2 分 06 秒"><img src="../assets/cielo/splash.webp" alt="" loading="lazy"><div class="video-status"><i></i><span>完整产品演示</span><b>播放视频</b><small>02:06 · 竖屏真实操作</small></div></button>
+            <div class="evidence-caption"><span>VIDEO / FULL DEMO · 02:06</span><h3>02:06 完整体验演示</h3><p>以一次真实的移动端使用路径，展示 Cielo 的产品结构、记忆管理、主动 Agent 与用户控制方式。</p></div>
+          </article>
+        </div>
+        <p class="material-note reveal">界面与演示均来自 Cielo 实际运行版本；涉及个人信息的内容已替换为测试数据或进行隐私处理。</p>
+      </div>
+    </section>
+
+    <section class="reflection shell">
+      <div class="section-label reveal"><span>04 / REFLECTION</span><span>NEXT ITERATION</span></div>
+      <blockquote class="reveal">Cielo 不是一次性的功能验证，而是一个在真实使用中持续生长的 AI 产品。</blockquote>
+      <div class="reflection-grid reveal"><p>真正困难的不是给产品增加更多 AI 能力，而是决定能力何时出现、如何被用户理解、怎样允许用户拒绝，以及出现错误后如何恢复。</p><p>持续使用也让下一阶段的方向变得更清晰：继续优化不同类型记忆的冷却与重新激活方式，让主动行为更准确地适应用户当下的状态，并在多个 Agent 的自然协作、响应成本与对话噪声之间找到更好的平衡。这些变化会继续进入下一轮产品迭代。</p></div>
+      <p class="reflection-statement reveal">比“让 AI 做更多”，更重要的是决定它应该在何时、以什么方式参与生活。</p>
+      <div class="case-outro reveal"><span>END OF CASE / CIELO 01</span><h2>这不是 Cielo 的终点，<br>只是当前版本的片尾。</h2><div class="case-end"><a href="../index.html#work">返回案例列表</a><a href="../index.html#contact">和我聊聊</a></div></div>
+    </section>
+  </main>
+
+  <div class="video-modal" data-video-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+    <button class="video-close" type="button" data-close-video>关闭</button>
+    <div class="video-modal-inner">
+      <div class="video-player-frame">
+        <video data-demo-video controls playsinline preload="metadata" poster="../assets/cielo/splash.webp">
+          <source src="../assets/cielo/demo-full.mp4" type="video/mp4">
+          您的浏览器暂不支持 HTML5 视频播放。
+        </video>
+      </div>
+      <aside class="video-notes">
+        <p>REAL PRODUCT DEMO / 02:06</p>
+        <h2 id="video-modal-title">Cielo<br>完整操作演示</h2>
+        <ol><li><span>01</span>进入真实运行产品</li><li><span>02</span>查看并编辑分层记忆</li><li><span>03</span>保存作品集测试数据</li><li><span>04</span>通过搜索与对话验证召回</li><li><span>05</span>查看用户可见的控制机制</li></ol>
+        <small>演示内容使用作品集专用测试数据，不包含私人记忆与真实敏感信息。</small>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="footer shell"><span>章雨馨 · AI 应用产品经理 · 2026</span><span>CIELO / CASE 01</span></footer>
+</body>
+</html>

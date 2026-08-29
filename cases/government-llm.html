@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="章雨馨参与省级政务大模型效果优化、AI 公文产品设计与内容安全策略的脱敏案例。">
+  <meta name="theme-color" content="#090b0d">
+  <title>政务大模型效果优化｜章雨馨</title>
+  <link rel="stylesheet" href="work.css">
+  <script src="work.js" defer></script>
+</head>
+<body class="gov">
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="grain" aria-hidden="true"></div><div class="page-progress" aria-hidden="true"><i data-progress></i></div>
+  <header class="case-nav" data-nav>
+    <a class="back" href="../index.html#work"><span>← 返回作品集</span><b>章雨馨</b></a>
+    <p>CASE 02 / GOVERNMENT LLM</p>
+    <a class="resume" href="../assets/zhangyuxin-ai-product-manager.pdf" download>下载简历</a>
+  </header>
+  <main id="main">
+    <section class="hero" data-hero>
+      <div class="hero-grid" aria-hidden="true"></div><div class="hero-lens" data-lens aria-hidden="true"><b>02</b></div>
+      <div class="hero-inner shell">
+        <p class="hero-meta enter"><span>GOVERNMENT LLM / EVALUATION &amp; SAFETY</span><span>2026.01—2026.06</span></p>
+        <div class="hero-main">
+          <p class="case-name enter">Government LLM</p>
+          <h1 class="enter">把模型问题，<br>变成可持续验证的优化闭环。</h1>
+          <p class="hero-summary enter">围绕政务问答、AI 公文与内容安全，参与定义效果标准、构建分类测试集，并通过多模型对比、Bad Case 归因、策略优化与回归评测，让模型问题从主观感受进入可评测、可归因、可复测的产品过程。</p>
+          <div class="hero-actions enter"><a href="#evaluation">查看过程</a><a href="#evidence">查看结果</a></div>
+        </div>
+        <div class="hero-bottom enter">
+          <div><small>ROLE</small><strong>AI 产品 / 产品助理实习生</strong><span>效果标准 · 测试集 · 产品机制 · 回归验证</span></div>
+          <div><small>WORKSTREAMS</small><strong>问答 / 公文 / 内容安全</strong><span>三条工作流，共用同一套验证逻辑</span></div>
+          <div><small>DISCLOSURE</small><strong>脱敏重构案例</strong><span>不公开内部样本、回答、界面与文档</span></div>
+        </div>
+        <a class="scroll" href="#context"><span>向下浏览</span><i></i></a>
+      </div>
+    </section>
+
+    <section class="overview shell" id="context">
+      <div class="section-label reveal"><span>00 / CONTEXT &amp; BOUNDARY</span><span>WHAT CAN BE SHOWN</span></div>
+      <div class="overview-title reveal"><h2>真正需要优化的，<br>不是某一句回答。</h2><p>政务场景同时要求准确、稳定、合规和可追溯。单个示例的改善不足以证明有效，需要先定义标准，再让问题进入可以反复验证的迭代过程。</p></div>
+      <div class="scope-grid reveal">
+        <article><span>PROJECT CONTEXT</span><h3>面向政务人员的 AI 应用平台</h3><p>覆盖政务咨询、日常办公、公文写作、文本分析与多语种服务等场景。案例不展示客户单位、系统界面、原始测试内容或内部知识。</p></article>
+        <article><span>MY CONTRIBUTION</span><h3>把效果问题转化为产品问题</h3><p>参与梳理场景、定义效果标准、构建分类测试集，进行多模型对比和 Bad Case 归因，并配合 Prompt、知识与输出约束调整后完成回归评测。</p><small>不将参与工作表述为独立完成全部模型训练或评测系统开发。</small></article>
+      </div>
+    </section>
+
+    <section class="chapter dark" id="evaluation">
+      <div class="shell">
+        <div class="section-label reveal"><span>01 / EVALUATION LOOP</span><span>SCENE → STANDARD → REGRESSION</span></div>
+        <div class="chapter-head reveal"><h2>先建立判断标准，<br>再讨论模型是否变好。</h2><p>三条工作流的目标不同，但都需要把“感觉不对”拆成可定位的问题，并确保一次修复没有让其他场景退化。</p></div>
+        <div class="track-tabs reveal" data-track-tabs>
+          <button class="is-active" data-copy="围绕咨询类问题定义正确性、场景适配与表达约束，并通过分类测试和多模型对比寻找稳定基线。"><span>01</span><b>政务问答</b><small>准确性 · 场景适配</small></button>
+          <button data-copy="围绕输入成本、生成结构与内容稳定性，设计“结构化输入—内容生成—结果编辑”的产品链路。"><span>02</span><b>AI 公文</b><small>结构化输入 · 可编辑结果</small></button>
+          <button data-copy="梳理敏感内容、事实幻觉、知识不确定与越权回答场景，为不同风险设计正常回答、风险提示或拒答策略。"><span>03</span><b>内容安全</b><small>风险分类 · 分级处置</small></button>
+        </div>
+        <p class="track-output reveal" data-track-output>围绕咨询类问题定义正确性、场景适配与表达约束，并通过分类测试和多模型对比寻找稳定基线。</p>
+        <div class="eval-stage reveal">
+          <div class="eval-flow">
+            <p>RECONSTRUCTED EVALUATION PIPELINE</p>
+            <div class="eval-steps" data-eval-steps>
+              <button class="is-active" data-copy="按真实使用任务拆分咨询、办公与安全场景，避免只用少量通用问答判断模型。"><span>步骤 01</span><b>场景分类</b></button>
+              <button data-copy="为不同场景定义正确性、完整性、格式、安全性等判断维度。"><span>步骤 02</span><b>效果标准</b></button>
+              <button data-copy="在同一问题与约束下比较不同模型或策略，建立可解释的测试基线。"><span>步骤 03</span><b>多模型对比</b></button>
+              <button data-copy="将失败原因拆分为知识覆盖、Prompt、输出约束和安全策略等可行动类型。"><span>步骤 04</span><b>Bad Case 归因</b></button>
+              <button data-copy="针对问题类型调整 Prompt、政务知识或输出规则，避免把所有问题都归因给模型本身。"><span>步骤 05</span><b>策略优化</b></button>
+              <button data-copy="复测已修复问题，同时检查相邻场景是否出现退化，让改进能够被持续验证。"><span>步骤 06</span><b>回归评测</b></button>
+            </div>
+            <p class="eval-flow-output" data-eval-output>按真实使用任务拆分咨询、办公与安全场景，避免只用少量通用问答判断模型。</p>
+          </div>
+          <article class="case-sheet">
+            <p>CASE CARD / 014</p><h3>合成测试案例：办事材料咨询</h3>
+            <ul class="case-list">
+              <li><span>EXPECTED</span><b>依据已知材料回答；信息不足时说明限制，不补造条件。</b></li>
+              <li><span>BAD CASE</span><b>把其他事项的通用要求错误迁移到当前问题。</b></li>
+              <li><span>DIAGNOSIS</span><b>知识召回范围过宽，输出缺少证据约束。</b></li>
+              <li><span>ACTION</span><b>收紧检索范围，补充引用与不确定性表达规则。</b></li>
+              <li><span>REGRESSION</span><b>复测当前问题，并检查相邻咨询场景是否受到影响。</b></li>
+            </ul>
+          </article>
+        </div>
+        <p class="material-note reveal">示例依据实际项目方法重构，仅用于说明评测思路；不包含内部测试集、模型原始回答或客户信息。</p>
+      </div>
+    </section>
+
+    <section class="chapter shell" id="mechanisms">
+      <div class="section-label reveal"><span>02 / PRODUCT MECHANISMS</span><span>GENERATION &amp; SAFETY</span></div>
+      <div class="chapter-head reveal"><h2>模型能力需要被放进<br>可控制的产品链路。</h2><p>公文生成关注输入成本和可编辑性；内容安全关注识别、分级和兜底。产品机制让模型输出不再是不可干预的黑盒结果。</p></div>
+      <div class="system-flow reveal">
+        <article><span>01 / INPUT</span><b>结构化输入</b><small>文种、主题、对象与关键事实</small><i></i></article>
+        <article><span>02 / GENERATE</span><b>内容生成</b><small>按模板与表达约束组织初稿</small><i></i></article>
+        <article><span>03 / INSPECT</span><b>风险识别</b><small>敏感、幻觉、不确定与越权</small><i></i></article>
+        <article><span>04 / RESPOND</span><b>分级处置</b><small>正常回答、提示限制或拒答</small><i></i></article>
+        <article><span>05 / EDIT</span><b>结果编辑</b><small>人工确认、修改与最终使用</small></article>
+      </div>
+    </section>
+
+    <section class="evidence" id="evidence">
+      <div class="shell">
+        <div class="section-label reveal"><span>03 / RESULT &amp; EVIDENCE</span><span>INTERNAL BASELINE</span></div>
+        <div class="chapter-head reveal"><h2>结果需要有口径，<br>也需要有边界。</h2><p>数据用于说明内部验证结果，不延伸为公开数据集成绩、商业化结果或对整个系统效果的概括。</p></div>
+        <div class="result-grid reveal">
+          <article class="result-card"><span>GOVERNMENT Q&amp;A</span><strong>+35%</strong><p>政务问答准确率相较内部测试基线的相对提升。</p><small>通过分类测试、多模型对比、Bad Case 归因与回归评测得到；原始测试集不公开。</small></article>
+          <article class="result-card"><span>AI DOCUMENT WORKFLOW</span><strong>−50%</strong><p>平均公文初稿完成时间相较内部业务记录降低。</p><small>结果来自结构化输入、生成与编辑链路的内部验证；不代表最终公文无需人工审核。</small></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing shell">
+      <div class="section-label reveal"><span>REFLECTION / 02</span><span>MODEL → PRODUCT</span></div>
+      <blockquote class="reveal">模型优化的价值，不是让某个答案看起来更好，而是建立一套能够持续发现、解释和验证问题的产品机制。</blockquote>
+      <div class="closing-grid reveal"><p>这段实践形成了对 AI 产品效果评测的基础判断：先明确真实任务和可接受边界，再选择指标、样本与优化方法。</p><p>也进一步意识到，政务场景中的安全不是附加审核，而应该从输入、生成到结果使用贯穿整个产品链路。</p></div>
+      <div class="case-end reveal"><a href="../index.html#work">返回案例列表</a><a href="education-saas.html">下一个案例：教育 SaaS</a></div>
+    </section>
+  </main>
+  <footer class="footer shell"><span>ZHANG YUXIN / AI PRODUCT MANAGER</span><span>CASE 02 · 2026</span></footer>
+</body>
+</html>

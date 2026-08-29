@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="章雨馨参与学校膳食与经费管理 SaaS 产品交付的脱敏案例。">
+  <meta name="theme-color" content="#090b0d">
+  <title>学校膳食与经费管理 SaaS｜章雨馨</title>
+  <link rel="stylesheet" href="work.css">
+  <script src="work.js" defer></script>
+</head>
+<body class="saas">
+  <a class="skip" href="#main">跳到主要内容</a>
+  <div class="grain" aria-hidden="true"></div><div class="page-progress" aria-hidden="true"><i data-progress></i></div>
+  <header class="case-nav" data-nav>
+    <a class="back" href="../index.html#work"><span>← 返回作品集</span><b>章雨馨</b></a>
+    <p>CASE 03 / EDUCATION SAAS</p>
+    <a class="resume" href="../assets/zhangyuxin-ai-product-manager.pdf" download>下载简历</a>
+  </header>
+  <main id="main">
+    <section class="hero" data-hero>
+      <div class="hero-grid" aria-hidden="true"></div><div class="hero-lens" data-lens aria-hidden="true"><b>03</b></div>
+      <div class="hero-inner shell">
+        <p class="hero-meta enter"><span>EDUCATION SAAS / PROCESS &amp; DELIVERY</span><span>2026.06—2026.08</span></p>
+        <div class="hero-main">
+          <p class="case-name enter">Education SaaS</p>
+          <h1 class="enter">当人员状态发生变化，<br>缴费、用餐与预算如何保持一致？</h1>
+          <p class="hero-summary enter">参与学校膳食与经费管理 SaaS 的产品交付，重点负责非三包相关模块。围绕缴费、缺餐登记、人员变动、财年餐次与预算执行，将跨模块业务规则转化为可研发、可核对、可回归验证的系统方案。</p>
+          <div class="hero-actions enter"><a href="#logic">查看业务关系</a><a href="#prototype">查看原型</a></div>
+        </div>
+        <div class="hero-bottom enter">
+          <div><small>COMPANY / ROLE</small><strong>西藏米优科技有限公司｜产品助理</strong><span>需求分析 · 业务流程 · 原型 · 测试与回归</span></div>
+          <div><small>MY SCOPE</small><strong>非三包相关模块</strong><span>缴费 · 缺餐 · 人员变动 · 餐次 · 预算</span></div>
+          <div><small>DELIVERY</small><strong>原型整体进入研发</strong><span>相关页面均完成实现，部分功能完成验收</span></div>
+        </div>
+        <a class="scroll" href="#context"><span>向下浏览</span><i></i></a>
+      </div>
+    </section>
+
+    <section class="overview shell" id="context">
+      <div class="section-label reveal"><span>00 / PLATFORM &amp; MY SCOPE</span><span>BOUNDARY FIRST</span></div>
+      <div class="overview-title reveal"><h2>不是一个孤立模块，<br>而是一组相互影响的业务状态。</h2><p>平台范围覆盖学校膳食、食品安全与经费管理。个人负责范围集中在非三包相关模块，不将局部工作包装为整个系统的独立负责。</p></div>
+      <div class="scope-grid reveal">
+        <article><span>PLATFORM SCOPE</span><h3>学校膳食与经费管理平台</h3><p>服务多角色的学校膳食业务，包含人员、用餐、财务、预算与采购等相互关联的系统流程。</p></article>
+        <article><span>MY SCOPE</span><h3>非三包模块与缴费管理流程</h3><p>负责需求分析、业务流程梳理、原型设计、研发沟通、功能测试与问题跟进，覆盖缴费、缺餐、人员变动、财年餐次与预算执行。</p><small>内部业务规则文档不公开；页面使用脱敏重构关系与界面。</small></article>
+      </div>
+    </section>
+
+    <section class="chapter dark" id="logic">
+      <div class="shell">
+        <div class="section-label reveal"><span>01 / CROSS-MODULE LOGIC</span><span>STATE → ACCOUNT → BUDGET</span></div>
+        <div class="chapter-head reveal"><h2>一次人员状态变化，<br>需要被整条业务链路接住。</h2><p>转入、转出与请假不仅改变人员名单，还会继续影响待缴状态、实际用餐餐次、预算执行和食堂下单。</p></div>
+        <div class="state-stage reveal">
+          <div class="state-controls" data-state-controls>
+            <button class="is-active" data-hits="status,payment,meal,budget,order" data-copy="转入登记完成后进入后续缴费与用餐流程，人数变化同步影响预算计算和下单参考。"><span>状态 01</span><b>转入</b></button>
+            <button data-hits="status,payment,meal,budget,order" data-copy="转出后停止后续计费与用餐，系统计算剩余金额，并将人数变化传递到预算与下单环节。"><span>状态 02</span><b>转出</b></button>
+            <button data-hits="status,meal,budget,order" data-copy="请假期间不计用餐费用，对应餐次与预算消耗随时间范围调整，结算时再核对余额。"><span>状态 03</span><b>请假 / 缺餐</b></button>
+            <button data-hits="status,payment,budget" data-copy="已生成结算后人员状态再次变化，需要重新检查余额与关联数据，避免结算结果和实际状态不一致。"><span>异常 04</span><b>结算后变更</b></button>
+          </div>
+          <div class="impact-panel">
+            <p>IMPACT MAP / DESENSITIZED</p>
+            <div class="impact-chain">
+              <span class="is-hit" data-impact="status">人员状态</span><span class="is-hit" data-impact="payment">缴费结算</span><span class="is-hit" data-impact="meal">用餐餐次</span><span class="is-hit" data-impact="budget">预算执行</span><span class="is-hit" data-impact="order">食堂下单</span>
+            </div>
+            <p class="impact-output" data-impact-output>转入登记完成后进入后续缴费与用餐流程，人数变化同步影响预算计算和下单参考。</p>
+          </div>
+        </div>
+        <p class="material-note reveal">公开页面仅表达跨模块关系，不展示内部政策参数、金额计算公式、审批权限和真实业务判断条件。</p>
+      </div>
+    </section>
+
+    <section class="chapter shell" id="prototype">
+      <div class="section-label reveal"><span>02 / FROM RULE TO INTERFACE</span><span>RECONSTRUCTED PROTOTYPES</span></div>
+      <div class="chapter-head reveal"><h2>让复杂的业务规则，<br>落到每一个可执行的页面动作里。</h2><p>围绕人员变动、缺餐登记与缴费结算，拆分操作角色、状态条件、流程分支与反馈结果，把规则转化为研发可以理解和实现的页面流程。</p></div>
+      <div class="prototype-reel reveal" data-prototype-reel>
+        <article class="prototype-card is-active" tabindex="0" data-copy="区分转入、转出与请假等状态，以及不同流转路径对应的处理结果，避免多种业务含义被同一种操作覆盖。">
+          <div class="mock-screen"><div class="mock-top"></div><div class="mock-layout"><aside class="mock-side"></aside><main class="mock-main"><div class="mock-metrics"><i></i><i></i><i></i></div><div class="mock-table"><i></i><i></i><i></i><i></i><i></i></div></main></div></div>
+          <div class="prototype-caption"><span>FRAME 01 / PERSONNEL STATUS</span><h3>人员变动</h3><p>状态分类、流程分支与关联结果。</p></div>
+        </article>
+        <article class="prototype-card" tabindex="0" data-copy="将学生范围、餐次与日期结构化，既降低登记成本，也让缺餐信息可以进入后续餐次和预算计算。">
+          <div class="mock-screen"><div class="mock-top"></div><div class="mock-main mock-form"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="prototype-caption"><span>FRAME 02 / MEAL ABSENCE</span><h3>缺餐登记</h3><p>对象选择、餐次范围与时间条件。</p></div>
+        </article>
+        <article class="prototype-card" tabindex="0" data-copy="让缴费、入账、余额与人员状态保持关联，并在结算结果出现差异时进入退款或补缴处理。">
+          <div class="mock-screen"><div class="mock-top"></div><div class="mock-ledger"><i></i><i></i><i></i><i></i></div><div class="mock-main mock-form"><i></i><i></i><i></i></div></div>
+          <div class="prototype-caption"><span>FRAME 03 / ACCOUNT &amp; SETTLEMENT</span><h3>缴费与结算</h3><p>账户状态、余额结果与异常处理。</p></div>
+        </article>
+      </div>
+      <p class="reel-output reveal" data-reel-output>区分转入、转出与请假等状态，以及不同流转路径对应的处理结果，避免多种业务含义被同一种操作覆盖。</p>
+      <p class="material-note reveal">界面依据本人原型结构脱敏重构，不使用真实学校、学生、金额、系统地址或内部编号。原始业务规则作为内部交付物存在，不在作品集中展示。</p>
+    </section>
+
+    <section class="chapter dark" id="validation">
+      <div class="shell">
+        <div class="section-label reveal"><span>03 / VALIDATE &amp; DELIVER</span><span>TEST → FIX → REGRESSION</span></div>
+        <div class="chapter-head reveal"><h2>不只确认页面可用，<br>还要核对整条链路的结果。</h2><p>功能实现后模拟不同人员状态，检查关联页面和数据结果。发现异常后记录问题与复现条件，提交开发修复，并在修复完成后进行回归测试。</p></div>
+        <div class="validation-layout reveal">
+          <div class="matrix">
+            <p>RECONSTRUCTED VALIDATION MATRIX</p>
+            <div class="matrix-grid">
+              <span></span><span class="axis">转入</span><span class="axis">转出</span><span class="axis">请假</span><span class="axis">结算后变更</span>
+              <span class="axis">缴费</span><span class="pass"></span><span class="pass"></span><span>—</span><span class="pass"></span>
+              <span class="axis">餐次</span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span>—</span>
+              <span class="axis">预算</span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span class="pass"></span>
+              <span class="axis">下单</span><span class="pass"></span><span class="pass"></span><span class="pass"></span><span>—</span>
+            </div>
+          </div>
+          <div class="regression">
+            <p>PRODUCT VALIDATION LOOP</p>
+            <ol><li><span>01</span><b>模拟人员状态与边界场景</b></li><li><span>02</span><b>检查关联页面与数据结果</b></li><li><span>03</span><b>记录问题、触发条件与复现路径</b></li><li><span>04</span><b>提交开发修复并跟进结果</b></li><li><span>05</span><b>回归原问题及相邻业务场景</b></li></ol>
+          </div>
+        </div>
+        <div class="delivery-proof reveal">
+          <div class="delivery-copy"><span>DELIVERY RECORD / SAME BATCH</span><h3>非三包模块原型已整体进入实际研发，相关页面均完成实现；截至离职交接时，其中部分功能完成验收。</h3><p>12项与6项属于同一时间段、同一批个人负责事项；6项包含在12项之中，不作为两组独立产出相加。</p></div>
+          <div class="delivery-numbers"><div><strong>12</strong><span>需求推进研发</span><small>同一批负责事项</small></div><div><strong>6</strong><span>完成功能验收</span><small>截至离职交接</small></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing shell">
+      <div class="section-label reveal"><span>REFLECTION / 03</span><span>RULE → SYSTEM</span></div>
+      <blockquote class="reveal">复杂系统的产品价值，不是增加更多页面，而是让一次变化在每个相关环节都得到一致的结果。</blockquote>
+      <div class="closing-grid reveal"><p>这段经历强化了对业务建模的理解：先找到跨模块共同依赖的核心状态，再设计各角色可以执行和核对的系统路径。</p><p>原型进入研发只是中间节点。通过状态验证、数据核对与回归测试，产品方案才真正形成可验证的交付闭环。</p></div>
+      <div class="case-end reveal"><a href="government-llm.html">上一个案例：政务大模型</a><a href="../index.html#work">返回案例列表</a></div>
+    </section>
+  </main>
+  <footer class="footer shell"><span>ZHANG YUXIN / AI PRODUCT MANAGER</span><span>CASE 03 · 2026</span></footer>
+</body>
+</html>
