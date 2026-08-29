@@ -67,9 +67,34 @@
   bindGroup('[data-track-tabs]', 'button[data-copy]', '[data-track-output]', 'copy');
   bindGroup('[data-eval-steps]', 'button[data-copy]', '[data-eval-output]', 'copy');
   bindGroup('[data-safety-controls]', 'button[data-copy]', '[data-safety-output]', 'copy');
-  bindGroup('[data-state-controls]', 'button[data-copy]', '[data-impact-output]', 'copy', button => {
-    const hits = (button.dataset.hits || '').split(',');
-    $$('[data-impact]').forEach(item => item.classList.toggle('is-hit', hits.includes(item.dataset.impact)));
-  });
+  const stateControls = $('[data-state-controls]');
+  if (stateControls) {
+    const buttons = $$('button[data-state]', stateControls);
+    const panels = $$('[data-state-panel]');
+    buttons.forEach(button => {
+      const activate = () => {
+        buttons.forEach(item => item.classList.toggle('is-active', item === button));
+        panels.forEach(panel => panel.classList.toggle('is-active', panel.dataset.statePanel === button.dataset.state));
+      };
+      button.addEventListener('pointerenter', activate);
+      button.addEventListener('focus', activate);
+      button.addEventListener('click', activate);
+    });
+  }
   bindGroup('[data-prototype-reel]', 'article[data-copy]', '[data-reel-output]', 'copy');
+
+  const validationControls = $('[data-validation-controls]');
+  if (validationControls) {
+    const buttons = $$('button[data-validation]', validationControls);
+    const panels = $$('[data-validation-panel]');
+    buttons.forEach(button => {
+      const activate = () => {
+        buttons.forEach(item => item.classList.toggle('is-active', item === button));
+        panels.forEach(panel => panel.classList.toggle('is-active', panel.dataset.validationPanel === button.dataset.validation));
+      };
+      button.addEventListener('pointerenter', activate);
+      button.addEventListener('focus', activate);
+      button.addEventListener('click', activate);
+    });
+  }
 })();
