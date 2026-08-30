@@ -249,7 +249,8 @@
   const caseLinks = {
     cielo: 'cases/cielo.html',
     gov: 'cases/government-llm.html',
-    saas: 'cases/education-saas.html'
+    saas: 'cases/education-saas.html',
+    pet: 'cases/pet-home.html'
   };
   function openCase(key) {
     if (caseLinks[key]) location.href = caseLinks[key];

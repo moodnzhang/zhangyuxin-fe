@@ -30,13 +30,18 @@
   if (!reducedMotion) {
     const hero = $('[data-hero]');
     const orbit = $('.hero-orbit', hero || document);
+    const devices = $('.cielo-hero-devices', hero || document);
     hero?.addEventListener('pointermove', event => {
       const rect = hero.getBoundingClientRect();
       const x = (event.clientX - rect.left) / rect.width - .5;
       const y = (event.clientY - rect.top) / rect.height - .5;
       if (orbit) orbit.style.transform = `translate3d(${x * 22}px,${y * 16}px,0) rotate(${x * 2.4}deg)`;
+      if (devices) devices.style.transform = `translate3d(${x * -11}px,${y * -8}px,0)`;
     });
-    hero?.addEventListener('pointerleave', () => { if (orbit) orbit.style.transform = ''; });
+    hero?.addEventListener('pointerleave', () => {
+      if (orbit) orbit.style.transform = '';
+      if (devices) devices.style.transform = '';
+    });
   }
 
   const swapCopy = (output, copy) => {

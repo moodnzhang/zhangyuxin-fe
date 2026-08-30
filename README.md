@@ -13,7 +13,7 @@
 - Product Method、Experience、Education & Honors、About 和 Contact；
 - 桌面端、移动端与 `prefers-reduced-motion` 适配。
 
-宠爱家详情页及 About 个人照片仍待补充材料后制作。
+宠爱家详情页已完成；About 个人照片仍待后续补充，不影响当前作品集浏览。
 
 ## 本地预览
 
@@ -25,6 +25,7 @@
 - `cases/cielo.html`：Cielo 个人智能体；
 - `cases/government-llm.html`：省级政务大模型效果优化；
 - `cases/education-saas.html`：教育信息化 SaaS。
+- `cases/pet-home.html`：宠爱家微信小程序。
 
 ## 发布
 

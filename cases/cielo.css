@@ -41,3 +41,31 @@
 .video-launch .video-status::after{content:"播放"}
 .overview-eyebrow{display:block;margin-bottom:24px;color:#718592;font-size:8px;letter-spacing:.18em}
 @media(max-width:720px){.overview-eyebrow{margin-bottom:18px;font-size:7px}}
+
+/* Hero product proof: real interfaces sit inside the original continuity orbit. */
+.case-hero .hero-inner{z-index:3}
+.case-hero .hero-orbit{z-index:1;right:-1vw;width:min(51vw,700px);opacity:.72}
+.case-hero .hero-orbit b{opacity:.18}
+.cielo-hero-devices{position:absolute;z-index:2;right:2.5vw;bottom:95px;width:min(39vw,570px);height:70vh;pointer-events:auto;transition:transform .75s var(--ease);animation-delay:.24s}
+.cielo-hero-devices figure{position:absolute;width:35%;height:73%;margin:0;padding:7px;border:1px solid rgba(151,174,188,.25);border-radius:25px;background:#10161a;box-shadow:0 30px 76px rgba(0,0,0,.5);overflow:hidden;transform-origin:center bottom;transition:transform .65s var(--ease),opacity .45s var(--ease),filter .45s var(--ease)}
+.cielo-hero-devices figure::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.1),transparent 25%);pointer-events:none}
+.cielo-hero-devices figure:nth-child(1){left:1%;bottom:4%;transform:rotate(-8deg) translateY(8%);opacity:.68;filter:brightness(.76)}
+.cielo-hero-devices figure:nth-child(2){z-index:2;left:31%;bottom:8%;width:39%;height:82%;transform:rotate(-1deg);filter:brightness(.9)}
+.cielo-hero-devices figure:nth-child(3){right:0;bottom:2%;transform:rotate(8deg) translateY(9%);opacity:.68;filter:brightness(.76)}
+.cielo-hero-devices:hover figure:nth-child(1){transform:rotate(-10deg) translate(-9px,2%);opacity:.88;filter:brightness(.88)}
+.cielo-hero-devices:hover figure:nth-child(2){transform:rotate(0) translateY(-8px);filter:brightness(1)}
+.cielo-hero-devices:hover figure:nth-child(3){transform:rotate(10deg) translate(9px,3%);opacity:.88;filter:brightness(.88)}
+.cielo-hero-devices img{width:100%;height:100%;display:block;border-radius:18px;object-fit:cover;object-position:top;filter:saturate(.72);transition:filter .45s var(--ease)}
+.cielo-hero-devices:hover img{filter:saturate(.92)}
+.cielo-hero-devices span{position:absolute;z-index:2;left:15px;bottom:17px;padding:5px 7px;background:rgba(7,10,12,.78);color:#b6c2c9;font-size:6px;letter-spacing:.13em}
+@media(min-width:721px) and (max-width:1150px){.hero-main{width:min(760px,66vw)}.cielo-hero-devices{right:-8vw;width:47vw;opacity:.72}}
+@media(max-width:720px){
+  .case-hero,.hero-inner{min-height:1050px}
+  .case-hero .hero-orbit{right:-38vw;top:7vh;width:108vw;opacity:.35}
+  .cielo-hero-devices{right:-13vw;top:78px;bottom:auto;width:80vw;height:330px;opacity:.34;pointer-events:none}
+  .cielo-hero-devices figure{border-radius:17px;padding:5px}
+  .cielo-hero-devices figure:nth-child(1),.cielo-hero-devices figure:nth-child(3){opacity:.48}
+  .cielo-hero-devices img{border-radius:12px}
+  .cielo-hero-devices span{display:none}
+  .case-hero .hero-main{margin:250px 0 35px}
+}
