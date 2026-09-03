@@ -7,10 +7,11 @@
   <meta name="theme-color" content="#090b0d">
   <title>Cielo｜章雨馨 AI 产品案例</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23090b0d'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%23a8b5bf' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='4' fill='%23a8b5bf'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="cielo.css">
-  <script src="cielo.js" defer></script>
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('portfolio-theme')==='day'?'day':'night'}catch{document.documentElement.dataset.theme='night'}</script>
+  <link rel="stylesheet" href="cielo.css"><link rel="stylesheet" href="../theme.css">
+  <script src="cielo.js" defer></script><script src="../theme.js" defer></script>
 </head>
-<body>
+<body class="cielo">
   <a class="skip" href="#content">跳到案例正文</a>
   <div class="grain" aria-hidden="true"></div>
   <div class="page-progress" aria-hidden="true"><i data-progress></i></div>
@@ -18,7 +19,7 @@
   <header class="case-nav" data-nav>
     <a class="back" href="../index.html#work"><span>返回作品集</span><b>章雨馨</b></a>
     <p>CIELO / CASE 01</p>
-    <a class="resume" href="../assets/zhangyuxin-ai-product-manager.pdf" download>下载简历</a>
+    <div class="case-actions"><button class="theme-toggle" type="button" data-theme-toggle aria-label="切换至白天主题"><span data-theme-icon aria-hidden="true">☼</span><small data-theme-label>白昼</small></button><a class="resume" href="../assets/zhangyuxin-ai-product-manager.pdf" download>下载简历</a></div>
   </header>
 
   <main id="content">

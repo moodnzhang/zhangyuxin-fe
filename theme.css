@@ -1,0 +1,92 @@
+/* Shared day / night controls. Night remains the portfolio's default signature. */
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:70px;padding:8px 10px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:background .3s,color .3s,border-color .3s,transform .3s var(--ease)}
+.theme-toggle span{font-family:Georgia,"Times New Roman",serif;font-size:14px;line-height:1}.theme-toggle small{padding:0;color:inherit;font-size:7px;letter-spacing:.12em}.theme-toggle:hover,.theme-toggle:focus-visible{border-color:var(--accent);color:var(--ink);transform:translateY(-1px);outline:none}.case-actions{justify-self:end;display:flex;align-items:center;gap:10px}.case-actions .resume{justify-self:auto}
+body.cielo{--accent:#aaa2c7;--accent-2:#cbc4df}body.gov{--accent:#b5a071;--accent-rgb:181,160,113}body.saas{--accent:#8fa68f;--accent-rgb:143,166,143}
+html,body,.site-header,.case-nav,.mobile-nav,.hero,.case-hero,.featured,.other-work,.method,.contact,.questions,.chapter,.evidence,.closing{transition:background-color .55s var(--ease),color .55s var(--ease),border-color .55s var(--ease)}
+
+html[data-theme="day"]{color-scheme:light;background:#e7e6e1}
+html[data-theme="day"] body{--bg:#e7e6e1;--surface:#dcddd9;--surface-2:#d3d5d2;--surface-3:#c9ccca;--ink:#191b1d;--muted:#5f6668;--dim:#7b8080;--line:rgba(25,27,29,.19);--line-soft:rgba(25,27,29,.1);background:var(--bg);color:var(--ink)}
+html[data-theme="day"] body.home{--accent:#597486;--accent-2:#456579}
+html[data-theme="day"] body.cielo{--accent:#716a90;--accent-2:#5d567e}
+html[data-theme="day"] body.gov{--accent:#876f43;--accent-rgb:135,111,67}
+html[data-theme="day"] body.saas{--accent:#607760;--accent-rgb:96,119,96}
+html[data-theme="day"] body.pet-home{--accent:#a36f79;--accent-rgb:163,111,121;--bg:#e9e4e2;background:var(--bg)}
+html[data-theme="day"] .grain{opacity:.022;mix-blend-mode:multiply}
+html[data-theme="day"] .site-header.is-scrolled,html[data-theme="day"] .case-nav.is-scrolled,html[data-theme="day"] .pet-home .case-nav.is-scrolled{background:rgba(231,230,225,.84);border-color:var(--line-soft)}
+html[data-theme="day"] .mobile-nav{background:rgba(231,230,225,.98)}
+html[data-theme="day"] .desktop-nav a,html[data-theme="day"] .case-nav .back span,html[data-theme="day"] .case-nav>p{color:#555d60}
+
+/* Homepage: a bright editorial room, with media cards kept as dark frames. */
+html[data-theme="day"] .home .opening{background:#e1e1dc}
+html[data-theme="day"] .home .hero{background:#e4e4df}
+html[data-theme="day"] .home .hero-canvas{opacity:.34;filter:contrast(.72)}
+html[data-theme="day"] .home .hero-vignette{background:radial-gradient(circle at 72% 46%,transparent 0,rgba(231,230,225,.04) 28%,rgba(231,230,225,.73) 78%),linear-gradient(90deg,#e4e4df 0,rgba(228,228,223,.9) 35%,transparent 72%),linear-gradient(0deg,#e4e4df 0,transparent 20%)}
+html[data-theme="day"] .home .featured{background:linear-gradient(#e7e6e1,#dedfdb 55%,#e7e6e1)}
+html[data-theme="day"] .home .other-work{background:#e7e6e1}
+html[data-theme="day"] .home .method{background:#dedfdb}
+html[data-theme="day"] .home .timeline article:hover,html[data-theme="day"] .home .timeline article:focus,html[data-theme="day"] .home .honors li:hover,html[data-theme="day"] .home .honors li:focus,html[data-theme="day"] .home .identity div:hover,html[data-theme="day"] .home .identity div:focus,html[data-theme="day"] .home .archive-proof{background:#d9dbd8}
+html[data-theme="day"] .home .contact{background:#dadbd7}
+html[data-theme="day"] .home .contact-glow{background:radial-gradient(circle,rgba(89,116,134,.15),transparent 66%)}
+html[data-theme="day"] .home .about-copy .about-lead{color:#343a3d!important}
+html[data-theme="day"] .home .hero-intro strong{color:#303639}
+html[data-theme="day"] .home .hero-intro span{color:#596267}
+html[data-theme="day"] .home .featured-copy h2{color:#434a4e}
+html[data-theme="day"] .home .featured-need h3{color:#303639}
+html[data-theme="day"] .home :is(.featured-summary,.featured-role,.featured-need p,.focus-copy){color:#596267}
+html[data-theme="day"] .home :is(.feature-tags span,.feature-facts span){color:#52636d}
+html[data-theme="day"] .home .portrait{background:#17191b}
+html[data-theme="day"] .home .portrait-image{filter:saturate(.72) brightness(.9) contrast(1.02) sepia(.04)}
+
+/* Cielo: pale paper environment with violet mechanisms; only real media stays in a dark screen frame. */
+html[data-theme="day"] .cielo .case-hero{background:radial-gradient(circle at 74% 44%,rgba(113,106,144,.14),transparent 59%),#e7e6e1}
+html[data-theme="day"] .cielo .hero-orbit b{background:#d2cedd;color:#554f72}
+html[data-theme="day"] .cielo .hero-orbit i{background:var(--accent);box-shadow:0 0 30px rgba(113,106,144,.26)}
+html[data-theme="day"] .cielo .questions{background:#dfdfdc}
+html[data-theme="day"] .cielo .question-strip button:hover,html[data-theme="day"] .cielo .question-strip button.is-active{background:#d4d2dc}
+html[data-theme="day"] .cielo :is(.questions-head p,.scene-copy>p:not(:first-child),.scene-copy ul,.overview-grid p,.build-head p,.role-boundary p,.evidence-head p,.reflection-grid p){color:var(--muted)}
+html[data-theme="day"] .cielo .scene-index a.is-active{background:var(--accent);color:#f4f2f6}
+html[data-theme="day"] .cielo .memory-machine button{background:#dedfdb;color:var(--ink)}
+html[data-theme="day"] .cielo .memory-machine button:hover,html[data-theme="day"] .cielo .memory-machine button.is-active{background:#d3d1dc;border-color:var(--accent)}
+html[data-theme="day"] .cielo :is(.memory-machine>p,.agent-stage>p,.trust-stage>p){background:#d9dad7;color:#555e63}
+html[data-theme="day"] .cielo .trigger-orbit b{background:#cbc7d8;color:#4f496a}
+html[data-theme="day"] .cielo .trigger-orbit i{background:#dedfdb;color:#596165}
+html[data-theme="day"] .cielo .decision-gate{background:rgba(220,221,217,.96);box-shadow:0 28px 65px rgba(53,49,61,.13)}
+html[data-theme="day"] .cielo .decision-gate>p b{color:#4d5054}
+html[data-theme="day"] .cielo .decision-gate>div i{background:linear-gradient(90deg,var(--accent) var(--score),#c3c5c2 var(--score))}
+html[data-theme="day"] .cielo .director{background:#cbc7d8;border-color:var(--accent);color:#403b55}
+html[data-theme="day"] .cielo .agent{background:#dedfdb;color:var(--ink)}
+html[data-theme="day"] .cielo .agent:hover,html[data-theme="day"] .cielo .agent.is-active{background:#d2cfdb;border-color:var(--accent)}
+html[data-theme="day"] .cielo .agent i{background:#c5c1d2;color:#4e4966}
+html[data-theme="day"] .cielo .trust-rings i:nth-child(3){background:#c8c4d5}
+html[data-theme="day"] .cielo .trust-stage button{background:#dedfdb;color:var(--ink)}
+html[data-theme="day"] .cielo .trust-stage button:hover,html[data-theme="day"] .cielo .trust-stage button.is-active{background:#d2cfdb;border-color:var(--accent)}
+html[data-theme="day"] .cielo .role-boundary article{background:#dcddd9}
+html[data-theme="day"] .cielo .evidence{background:#dedfdb}
+html[data-theme="day"] .cielo .evidence-card{background:#d6d7d4!important;color:var(--ink)}
+html[data-theme="day"] .cielo .evidence-caption p{color:#586166}
+html[data-theme="day"] .cielo .shot-stage{--ink:#efeee9;--muted:#9ca5aa;color:#efeee9}
+html[data-theme="day"] .cielo .reflection{background:#e2e1dd}
+html[data-theme="day"] .cielo .reflection-statement{color:#41474a}
+
+/* Work cases: common daylight surfaces. Product screenshots and video remain framed in charcoal. */
+html[data-theme="day"] :is(.gov,.saas,.pet-home) .hero{background:radial-gradient(circle at 78% 38%,rgba(var(--accent-rgb),.17),transparent 38%),var(--bg)}
+html[data-theme="day"] :is(.gov,.saas,.pet-home) .hero-lens b{color:rgba(25,27,29,.08)}
+html[data-theme="day"] :is(.gov,.saas,.pet-home) .chapter.dark,html[data-theme="day"] :is(.gov,.saas,.pet-home) .evidence-chapter{background:#dedfdb}
+html[data-theme="day"] :is(.gov,.saas,.pet-home) :is(.eval-flow,.case-sheet,.result-card,.impact-panel,.prototype-card,.matrix,.regression,.state-propagation,.validation-studio,.document-proof,.workstream-nav,.safety-panel,.artifact-card,.implementation-card,.pet-need-grid article,.pet-scene-cinema,.pet-module-reel,.pet-ai-stage,.pet-delivery-board,.pet-proof-strip article,.platform-proof,.award-card){background-color:#dcddd9}
+html[data-theme="day"] :is(.gov,.saas,.pet-home) :is(.track-tabs button,.state-controls button,.validation-tabs button,.safety-controls button,.pet-scene-menu button,.pet-ai-context button,.pet-delivery-steps button):hover,html[data-theme="day"] :is(.gov,.saas,.pet-home) :is(.track-tabs button,.state-controls button,.validation-tabs button,.safety-controls button,.pet-scene-menu button,.pet-ai-context button,.pet-delivery-steps button).is-active{background:rgba(var(--accent-rgb),.13)}
+html[data-theme="day"] :is(.gov,.saas,.pet-home) :is(.eval-steps button,.source-mark,.artifact-cover){background:#d2d4d1}
+html[data-theme="day"] :is(.gov,.saas,.pet-home) :is(.hero-summary,.overview-title p,.chapter-head p,.scope-grid p,.track-output,.impact-output,.reel-output,.material-note,.pet-reflection-lead){color:var(--muted)}
+
+/* Pet Home keeps the warmer daylight stock and dark phone / film frames. */
+html[data-theme="day"] .pet-home :is(.pet-v2-hero,.pet-system-v2,.pet-ai-v2,.pet-delivery-v2){background:radial-gradient(circle at 65% 20%,rgba(var(--accent-rgb),.13),transparent 32%),var(--bg)}
+html[data-theme="day"] .pet-home .pet-home-v2 .chapter.dark{background:#e0dcda}
+html[data-theme="day"] .pet-home .pet-module-reel article.is-active{background:radial-gradient(circle at 35% 48%,rgba(var(--accent-rgb),.15),transparent 48%),#d8d4d2}
+html[data-theme="day"] .pet-home .pet-history-note{background:rgba(var(--accent-rgb),.08);color:#66585c}
+html[data-theme="day"] .pet-home .pet-defense-screen{background:#100e10}
+html[data-theme="day"] .pet-home .pet-defense-film figcaption strong{color:#463d40}
+html[data-theme="day"] .pet-home .pet-profile-core strong{color:#5f474d}
+html[data-theme="day"] .pet-home .pet-profile-core small{color:#6f6064}
+
+@media(max-width:1000px){.desktop-nav .theme-toggle{display:none}.mobile-nav .theme-toggle{margin-top:18px;width:100%;padding:13px}.case-actions{gap:6px}.case-actions .theme-toggle{min-width:40px;padding:8px}.case-actions .theme-toggle small{display:none}}
+@media(max-width:720px){.case-actions .resume{padding-inline:10px}.theme-toggle{min-width:42px}}
+@media(prefers-reduced-motion:reduce){html,body,.site-header,.case-nav,.mobile-nav,.hero,.case-hero,.featured,.other-work,.method,.contact,.questions,.chapter,.evidence,.closing{transition:none}}
