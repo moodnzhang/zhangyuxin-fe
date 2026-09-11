@@ -155,8 +155,37 @@
       });
     });
     cieloVisual.addEventListener('click', event => { if (!event.target.closest('button')) location.href = 'cases/cielo.html'; });
-    cieloVisual.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') location.href = 'cases/cielo.html'; });
+    cieloVisual.addEventListener('keydown', event => { if (!event.target.closest('button') && (event.key === 'Enter' || event.key === ' ')) location.href = 'cases/cielo.html'; });
   }
+
+  const cieloProductImage = $('[data-cielo-product-image]');
+  const cieloProductTitle = $('[data-cielo-product-title]');
+  const cieloProductNote = $('[data-cielo-product-note]');
+  const cieloProductTabs = $$('[data-cielo-product-tab]');
+  let cieloProductTimer;
+  const showCieloProduct = tab => {
+    if (!tab || tab.classList.contains('is-active') || !cieloProductImage) return;
+    cieloProductTabs.forEach(item => {
+      const active = item === tab;
+      item.classList.toggle('is-active', active);
+      item.setAttribute('aria-pressed', String(active));
+    });
+    cieloProductImage.classList.add('is-changing');
+    clearTimeout(cieloProductTimer);
+    cieloProductTimer = setTimeout(() => {
+      cieloProductImage.src = tab.dataset.image;
+      cieloProductImage.alt = tab.dataset.alt;
+      if (cieloProductTitle) cieloProductTitle.textContent = tab.dataset.title;
+      if (cieloProductNote) cieloProductNote.textContent = tab.dataset.note;
+      cieloProductImage.classList.remove('is-changing');
+    }, reducedMotion ? 0 : 150);
+  };
+  cieloProductTabs.forEach((tab, index) => {
+    tab.setAttribute('aria-pressed', String(index === 0));
+    tab.addEventListener('pointerenter', () => showCieloProduct(tab));
+    tab.addEventListener('focus', () => showCieloProduct(tab));
+    tab.addEventListener('click', () => showCieloProduct(tab));
+  });
 
   const films = $$('.film');
   films.forEach(film => {
